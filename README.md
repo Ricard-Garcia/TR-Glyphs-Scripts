@@ -1,6 +1,6 @@
 # General
 
-Python scripts made at [Typerepublic] (http://typerepublic.com) for  [Glyphs App](http://glyphsapp.com/) font editor.
+Python scripts made at [Typerepublic](http://typerepublic.com/) for  [Glyphs App](http://glyphsapp.com/) font editor.
 
 
 # Setting-up

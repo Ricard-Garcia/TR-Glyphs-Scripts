@@ -37,14 +37,6 @@ As said previously, some scripts might need the module *Vanilla* for creating UI
 
 This group of scripts are the result of all the particular necessities we've encontoured at [Typerepublic] (http://typerepublic.com) while developing different kind of projects. Please note that this started as a unique set of tools for very particular tasks we had to do during the development of our projects. Some scripts might do very similar tasks that others' are already doing but still we found it worth enough to share them with whoever might find them interesting and handy.
 
-## Testing
-
-*Anchor Mover is for batch-processing anchor positions. Can be useful after adjusting the x-height. No-brainer: I always use the Repostion script on my combining marks, so stacking combining marks stays in the italic angle.*
-
-* **Anchor Mover:**  no clipping will occur in Chrome.*
-
-* **New Tab with Fraction Figure Combinations:** Opens an Edit tab with fraction figure combos for spacing and kerning.
-
 
 # Possible problems
 

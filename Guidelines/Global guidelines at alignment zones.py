@@ -1,14 +1,22 @@
 # MenuTitle: Guides through all alignment zones
 # Ricard Garcia - 05.11.2018
 # -------------------
+
 # -*- coding: utf-8 -*-
 __doc__="""
 Sets a global guideline in each alignment zone.
 """
 
+# ---------------------
+# Variables
+# ---------------------
 # Set the variable of current master
 thisMaster = Font.selectedFontMaster
 
+
+# ---------------------
+# Engine
+# ---------------------
 # For each alignment zone in the current master
 for az in thisMaster.alignmentZones:
 
@@ -30,5 +38,11 @@ for az in thisMaster.alignmentZones:
 
 	print ("Guideline at: %d"%AlignZone)
 
-
+# Pop-up notification
 Glyphs.showNotification("Guidelines", "Global guidelines set at alignment zones.")
+
+
+# ---------------------
+# Test
+# ---------------------
+print("Done!")

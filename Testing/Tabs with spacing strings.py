@@ -1,6 +1,7 @@
 # MenuTitle: Set first and second tab to spacing strings
 # Ricard Garcia - 08.04.2018
 # -------------------
+
 # -*- coding: utf-8 -*-
 __doc__="""
 Creates first and second tab with spacing strings. First tab lowercase and second uppercase.
@@ -8,11 +9,14 @@ Creates first and second tab with spacing strings. First tab lowercase and secon
 
 # ---------------------
 # Modules
+# ---------------------
 import textwrap
 import os
 
+
 # ---------------------
-# General variables
+# Variables
+# ---------------------
 f = Glyphs.font
 glyphs = f.glyphs
 tabs = f.tabs
@@ -21,7 +25,8 @@ tabs = f.tabs
 
 
 # ---------------------
-# Count
+# Engine
+# ---------------------
 tabCount = 0
 
 if not tabs:
@@ -227,6 +232,13 @@ else:
 			
 		tabCount += 1
 
-# ---------------------
 # Glyphs notifications
 Glyphs.showNotification("Sorted tabs", "Generated tabs with spacing strings.")
+
+
+# ---------------------
+# Test
+# ---------------------
+print("Done!")
+
+

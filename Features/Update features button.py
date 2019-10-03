@@ -1,12 +1,27 @@
 #MenuTitle: Update features window with button - 11.04.2019
+# Ricard Garcia - ??.03.2018
+# -------------------
+
 # -*- coding: utf-8 -*-
 __doc__="""
 Displays a window with a button that updates curren font's feautres.
 """
+
+# ---------------------
+# Modules
+# ---------------------
 from vanilla import *
 
+
+# ---------------------
+# Variables
+# ---------------------
 f = Glyphs.font
 
+
+# ---------------------
+# Engine
+# ---------------------
 class ButtonDemo(object):
 
      def __init__(self):
@@ -21,3 +36,8 @@ class ButtonDemo(object):
 
 ButtonDemo()
 
+
+# ---------------------
+# Test
+# ---------------------
+print("Done!")

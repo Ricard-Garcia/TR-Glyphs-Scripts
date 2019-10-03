@@ -1,25 +1,34 @@
 #MenuTitle: Mark all colored marks in all opened fonts
+## Ricard Garcia - 14.03.2018
+# -------------------
+
 # -*- coding: utf-8 -*-
 __doc__="""
 In current font, marks in color every stylistic set (until .ss03).
 """
-# ----------------------------
-# 14.03.2019
-# ----------------------------
 
+
+# ---------------------
 # Modules
+# ---------------------
 from AppKit import NSColor, NSColorSpace
 
+
+# ---------------------
+# Variables
+# ---------------------
 # Glyphs
 glyphs = Font.glyphs
 # Marking colors
 lightBlue = NSColor.colorWithDeviceHue_saturation_brightness_alpha_(118/255, 214/255, 255/255, 1) 
 midBlue = NSColor.colorWithDeviceHue_saturation_brightness_alpha_(0/255, 150/255, 255/255, 1) 
 darkBlue = NSColor.colorWithDeviceHue_saturation_brightness_alpha_(0/255, 84/255, 147/255, 1)
-
 grey = NSColor.colorWithDeviceHue_saturation_brightness_alpha_(100/255, 100/255, 100/255, 1)
 
 
+# ---------------------
+# Engine
+# ---------------------
 # Loop through all fonts
 	# Loop through all glyphs
 for g in glyphs:
@@ -39,3 +48,8 @@ for g in glyphs:
 		else:
 			g.colorObject = None
 
+
+# ---------------------
+# Test
+# ---------------------
+print("Done!")

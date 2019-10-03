@@ -1,11 +1,15 @@
 #MenuTitle: .ss01 from selected characters
+# Ricard Garcia - ??.02.2018
+# -------------------
+
 # -*- coding: utf-8 -*-
 __doc__="""
 Creates new glyphs with .ss01 suffix from selected characters. Then update features.
 """
 
 # ---------------------
-# General variables
+# Variables
+# ---------------------
 font = Glyphs.font
 glyphs = font.glyphs
 
@@ -24,6 +28,9 @@ print(select_g)
 
 
 # ---------------------
+# Engine
+# ---------------------
+# ---------------------
 # Generate glyphs
 for g in select_g:
 	if g+'.ss01' in glyphs:
@@ -34,8 +41,6 @@ for g in select_g:
 		newGlyph.name = g+'.ss01'
 		font.glyphs.append(newGlyph)
 		newGlyph.color = 6
-
-
 
 # ---------------------
 # Colour
@@ -52,8 +57,13 @@ for g in select_g:
 for feature in font.features:
         if feature.automatic:
                 feature.update()
-                
-                
+                         
 # ---------------------
 # Clear log in Macro Panel
 # Glyphs.clearLog()
+
+
+# ---------------------
+# Test
+# ---------------------
+print("Done!")

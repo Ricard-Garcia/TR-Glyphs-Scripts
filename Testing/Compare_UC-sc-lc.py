@@ -1,11 +1,22 @@
-#MenuTitle: New tab with uppercase, small cap and lowercase
+# MenuTitle: New tab with uppercase, small cap and lowercase
+# Ricard Garcia - 02.10.2019
+# -------------------
+
 # -*- coding: utf-8 -*-
 __doc__="""
 Opens a new tab with the combination of uppercase, small cap and lowercase of each character.
 """
 
-# Comparing uppercase, small caps and lowercase
+# ---------------------
+# Variables
+# ---------------------
+outputString = " "
 
+
+# ---------------------
+# List
+# ---------------------
+# Comparing uppercase, small caps and lowercase
 base_characters = [ 
 "a",
 "aacute",
@@ -134,8 +145,10 @@ base_characters = [
 "zdotaccent"
 ]
 
-outputString = " "
 
+# ---------------------
+# Engine
+# ---------------------
 for bc in base_characters:
 	capitalized_letter = bc.capitalize()
 	
@@ -146,10 +159,15 @@ for bc in base_characters:
 	outputString += "\n" + result 
 
 	print(outputString)
-	
+
+# Open new tab with outputString
 Font.newTab(outputString)
 
-	
+
+# ---------------------
+# Test
+# ---------------------
+print("Done!")
 
 	
 	

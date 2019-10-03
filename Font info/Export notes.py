@@ -1,4 +1,8 @@
 #MenuTitle: Generates a .txt file of the notes to the current path of the file.
+# Ricard Garcia - ??.05.2019
+# -------------------
+
+
 # -*- coding: utf-8 -*-
 __doc__="""
 In file's path, generates a .txt file of current font's notes.
@@ -6,12 +10,15 @@ In file's path, generates a .txt file of current font's notes.
 
 # ---------------------
 # Modules
+# ---------------------
 from random import randint
 import textwrap
 import os
 
+
 # ---------------------
-# General variables
+# Variables
+# ---------------------
 font = Glyphs.font
 glyphs = font.glyphs
 
@@ -27,8 +34,11 @@ fPath = font.filepath
 #print(fDirectory)
 #print(fName)
 #print(fPath)
-# print(f"File name parts {fNameParts}.")
+#print(f"File name parts {fNameParts}.")
 
+# ---------------------
+# Variables
+# ---------------------
 
 # ---------------------
 # Generating features file
@@ -51,3 +61,9 @@ newFile.close()
 # ---------------------
 # Clear log in macro Panel (Glyphs)
 Glyphs.clearLog()
+
+
+# ---------------------
+# Test
+# ---------------------
+print("Done!")

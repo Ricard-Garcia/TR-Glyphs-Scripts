@@ -1,14 +1,21 @@
 # MenuTitle: New tab with OHhamburgefontsiv randomized
 # Ricard Garcia - 07.11.2018
 # -------------------
+
 # -*- coding: utf-8 -*-
 __doc__="""
 Creates a new tab with 10 random combinations of OHhamburgefontsiv.
 """
-# --------------------------------
+
+# ---------------------
+# Modules
+# ---------------------
 from random import randint
 
-# List with letters ---------------------------
+
+# ---------------------
+# Lists
+# ---------------------
 letters = [
     'a',
     'm',
@@ -28,8 +35,13 @@ letters = [
 
 #print(len(letters))
 
-# Loop creating "words" ---------------------------
+
+# ---------------------
+# Engine
+# ---------------------
+# Loop creating "words"
 numberWords = 15
+
 #lstWords = []
 outputString = ""
 
@@ -67,4 +79,11 @@ for w in range(numberWords):
 
 	outputString += "%s\n" % string
 
+# Open new tab
 Font.newTab(outputString)
+
+
+# ---------------------
+# Test
+# ---------------------
+print("Done!")

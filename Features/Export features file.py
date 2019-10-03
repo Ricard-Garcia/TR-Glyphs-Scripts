@@ -1,4 +1,7 @@
 #MenuTitle: Exporting features file - 19.02.2019
+# Ricard Garcia - ??.03.2018
+# -------------------
+
 # -*- coding: utf-8 -*-
 __doc__="""
 From a given file, exports a .fea file with all of its features.
@@ -6,13 +9,15 @@ From a given file, exports a .fea file with all of its features.
 
 # ---------------------
 # Modules
+# ---------------------
 from random import randint
 import textwrap
 import os
 
 
 # ---------------------
-# General variables
+# Variables
+# ---------------------
 font = Glyphs.font
 glyphs = font.glyphs
 
@@ -33,6 +38,9 @@ fPath = font.filepath
 
 
 # ---------------------
+# Engine
+# ---------------------
+# ---------------------
 # Generating features file
 NewfName = fNameParts[0] + '.fea' # Change extension
 NewfPath = os.path.join(fDirectory, NewfName) # Change extension
@@ -41,7 +49,6 @@ NewfPath = os.path.join(fDirectory, NewfName) # Change extension
 
 # Title
 codeFeatures = "# %s features\n\n" % (fNameParts[0])
-
 
 # Loop through classes
 codeFeatures += "#Classes"
@@ -77,7 +84,12 @@ newFile = open(NewfPath, 'w')
 newFile.write(codeFeatures)
 newFile.close()
 
-
 # ---------------------
 # Clear log in macro Panel (Glyphs)
 Glyphs.clearLog()
+
+
+# ---------------------
+# Test
+# ---------------------
+print("Done!")

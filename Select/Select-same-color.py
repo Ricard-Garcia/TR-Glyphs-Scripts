@@ -1,6 +1,7 @@
 # MenuTitle: Select same color
-# Ricard Garcia - 02.10.2019
+# Ricard Garcia (@Typerepublic) - 02.10.2019
 # -------------------
+
 # -*- coding: utf-8 -*-
 __doc__="""
 From a given glyph, selects other glyphs with the same color."""
@@ -8,7 +9,6 @@ From a given glyph, selects other glyphs with the same color."""
 # ---------------------
 # Variables
 # ---------------------
-
 # Font 
 f = Glyphs.font
 
@@ -19,7 +19,6 @@ nextSelection = []
 # ---------------------
 # Engine
 # ---------------------
-
 # Loop iterating trhough the font to identify glpyhs with the same color
 for s in f.selection:
 	for g in f.glyphs:
@@ -34,6 +33,6 @@ f.selection = nextSelection
 
 
 # ---------------------
-# Loop
+# Test
 # ---------------------
 print("Done")

@@ -35,7 +35,6 @@ print(select_g)
 for g in select_g:
 	if g+'.ss01' in glyphs:
 		print "Glyph %s.ss01 already in font." % (g)
-
 	else:
 		newGlyph = font.glyphs[g].copy()
 		newGlyph.name = g+'.ss01'

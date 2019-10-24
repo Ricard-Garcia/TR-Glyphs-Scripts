@@ -1,11 +1,14 @@
 # MenuTitle: New tab with uppercase, small cap and lowercase
-# Ricard Garcia - 02.10.2019
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia - 02.10.2019
+# --------------------------
+
+
 __doc__="""
 Opens a new tab with the combination of uppercase, small cap and lowercase of each character.
 """
+
 
 # ---------------------
 # Variables

@@ -1,11 +1,14 @@
 # MenuTitle: Font info data
-# Ricard Garcia - 05.11.2018
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia - ??.02.2017 
+# --------------------------
+
+
 __doc__="""
-	Set font.info data to Current font.
+Set font.info data to Current font.
 """
+
 
 # ---------------------
 # Variables

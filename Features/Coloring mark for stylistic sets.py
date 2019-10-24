@@ -1,8 +1,10 @@
 #MenuTitle: Mark all colored marks in all opened fonts
-## Ricard Garcia - 14.03.2018
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia - 14.03.2019
+# --------------------------
+
+
 __doc__="""
 In current font, marks in color every stylistic set (until .ss03).
 """

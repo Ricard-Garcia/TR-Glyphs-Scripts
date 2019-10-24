@@ -1,11 +1,14 @@
 #MenuTitle: Update features window with button - 11.04.2019
-# Ricard Garcia - ??.03.2018
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia - ??.03.2019
+# --------------------------
+
+
 __doc__="""
 Displays a window with a button that updates curren font's feautres.
 """
+
 
 # ---------------------
 # Modules

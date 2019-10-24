@@ -1,11 +1,13 @@
 # MenuTitle: New tab with OHhamburgefontsiv randomized
-# Ricard Garcia - 07.11.2018
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia - 07.11.2018
+# --------------------------
+
 __doc__="""
 Creates a new tab with 10 random combinations of OHhamburgefontsiv.
 """
+
 
 # ---------------------
 # Modules

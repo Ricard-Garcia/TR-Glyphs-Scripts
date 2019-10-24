@@ -1,11 +1,14 @@
 # MenuTitle: Select characters with components
-# Ricard Garcia (with special help from Rainer, Tosche and Mark) - 10.02.2019
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia (with special help from Rainer, Tosche and Mark) - 10.02.2019
+# ---------------------------------------------------------------------------
+
+
 __doc__="""
 Select all of the characters that have components in it.
 """
+
 
 # ---------------------
 # Variables

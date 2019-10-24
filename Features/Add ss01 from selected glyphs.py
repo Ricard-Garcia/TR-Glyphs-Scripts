@@ -1,11 +1,14 @@
 #MenuTitle: .ss01 from selected characters
-# Ricard Garcia - ??.02.2018
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia - ??.02.2019
+# --------------------------
+
+
 __doc__="""
 Creates new glyphs with .ss01 suffix from selected characters. Then update features.
 """
+
 
 # ---------------------
 # Variables

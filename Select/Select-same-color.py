@@ -1,10 +1,14 @@
 # MenuTitle: Select same color
-# Ricard Garcia (@Typerepublic) - 02.10.2019
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia (@Typerepublic) - 02.10.2019 
+# ------------------------------------------
+
+
 __doc__="""
-From a given glyph, selects other glyphs with the same color."""
+From a given glyph, selects other glyphs with the same color.
+"""
+
 
 # ---------------------
 # Variables

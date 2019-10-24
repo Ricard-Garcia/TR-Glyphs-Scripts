@@ -1,12 +1,15 @@
 # MenuTitle: New tab with 10 highest and lowest glyphs in current master
+# -*- coding: utf-8 -*-
+
 # Ricard Garcia (@Typerepublic) - 03.10.2019 
 # Parts based on code by mekkablue (https://github.com/mekkablue)
-# -------------------
+# ---------------------------------------------------------------
 
-# -*- coding: utf-8 -*-
+
 __doc__="""
 Reports highest and lowest glyphs for each master in the Macro Window.
 """
+
 
 # ---------------------
 # Variables

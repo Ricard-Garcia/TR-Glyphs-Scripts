@@ -1,12 +1,14 @@
 #MenuTitle: Generates a .txt file of the notes to the current path of the file.
-# Ricard Garcia - ??.05.2019
-# -------------------
-
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia - ??.05.2019
+# --------------------------
+
+
 __doc__="""
 In file's path, generates a .txt file of current font's notes.
 """
+
 
 # ---------------------
 # Modules

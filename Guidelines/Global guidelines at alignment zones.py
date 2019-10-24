@@ -1,11 +1,14 @@
 # MenuTitle: Guides through all alignment zones
-# Ricard Garcia - 05.11.2018
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia - 05.11.2018 
+# --------------------------
+
+
 __doc__="""
 Sets a global guideline in each alignment zone.
 """
+
 
 # ---------------------
 # Variables

@@ -1,11 +1,14 @@
 #MenuTitle: Exporting features file - 19.02.2019
-# Ricard Garcia - ??.03.2018
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia - ??.03.2019
+# --------------------------
+
+
 __doc__="""
 From a given file, exports a .fea file with all of its features.
 """
+
 
 # ---------------------
 # Modules

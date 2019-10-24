@@ -1,11 +1,14 @@
 # MenuTitle: Set first and second tab to spacing strings
-# Ricard Garcia - 08.04.2018
-# -------------------
-
 # -*- coding: utf-8 -*-
+
+# Ricard Garcia - 08.04.2018
+# --------------------------
+
+
 __doc__="""
 Creates first and second tab with spacing strings. First tab lowercase and second uppercase.
 """
+
 
 # ---------------------
 # Modules

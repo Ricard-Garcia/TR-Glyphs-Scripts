@@ -1,4 +1,4 @@
-# MenuTitle: New Tab with Left and Right Kern Keys
+# MenuTitle: New Tab with All Kern Keys
 # -*- coding: utf-8 -*-
 
 # Ricard Garcia (@Typerepublic) - 24.10.2019

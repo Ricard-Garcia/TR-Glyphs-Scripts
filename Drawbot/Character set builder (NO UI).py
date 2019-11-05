@@ -216,7 +216,7 @@ generalInfo.append("%s — Character set"%(str(f.familyName)), font="Barna-Regul
 text(generalInfo, (margin, h*0.96))
 
 # Dashed lines
-drawLinesTopBottom(w, h, margin):
+drawLinesTopBottom(w, h, margin)
 
 # Point/Leading size
 columnWidth = w - margin*2

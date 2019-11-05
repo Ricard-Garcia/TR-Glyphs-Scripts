@@ -373,5 +373,12 @@ saveImage(NewfPath)
 # ---------------------
 # Test
 # ---------------------
+Glyphs.showNotification('Character set builder', 'Done character set of the current font.')
+
+
+
+# ---------------------
+# Test
+# ---------------------
 print("Done")
 

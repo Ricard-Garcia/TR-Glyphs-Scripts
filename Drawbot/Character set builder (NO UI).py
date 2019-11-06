@@ -243,7 +243,7 @@ originY = h - margin -size
 loop = 0
 
 for g in exportingGlyphs:
-    for m in f.masters:
+    for m in f.masters[3:4]:
 
         pathToDraw = g.layers[m.id]
         #print(m.id)
@@ -363,7 +363,7 @@ fPath = f.filepath
 
 # -----------------------------------------------------
 # Generating a text file with the report 
-NewfName = fNameParts[0] + ' - Character set.pdf' # Change extension
+NewfName = fNameParts[0] + ' - Character set-2.pdf' # Change extension
 NewfPath = os.path.join(fDirectory, NewfName) # Change extension
 #print(NewfPath)
 
@@ -373,7 +373,7 @@ saveImage(NewfPath)
 # ---------------------
 # Test
 # ---------------------
-Glyphs.showNotification('Character set builder', 'Done character set of the current font.')
+Glyphs.showNotification('Character set builder', 'TEST')
 
 
 

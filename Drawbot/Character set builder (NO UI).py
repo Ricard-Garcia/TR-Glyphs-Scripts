@@ -21,6 +21,14 @@ from random import randint
 import textwrap
 import os
 
+# ---------------------
+# Empty stack for drawbot
+newDrawing()
+
+# ---------------------
+# Clear log in Macro Panel
+Glyphs.clearLog()
+
 
 # ---------------------
 # Variables
@@ -50,7 +58,13 @@ def drawLinesTopBottom(w, h, margin):
     stroke(0)
     lineCap("round")
     lineDash(.25, 2.5)
+    
+    # Top line
     line((margin, h*0.95), (w-margin,h*0.95))
+    
+    # Bottom line
+    line((margin, h*0.08), (w-margin,h*0.8))
+    
     stroke(None)
     lineDash(None)
 
@@ -206,10 +220,10 @@ columns = 8
 boxWidth = (w-margin*2) / columns
 #print("Box widht:", boxWidth)
 
+
 # ································· 
 # Text in the cover
 # ·································
-
 # Typeface's name + "Character set"
 generalInfo = FormattedString()
 generalInfo.append("%s — Character set"%(str(f.familyName)), font="Barna-Regular", fontSize = 10, fill = (0))
@@ -243,12 +257,10 @@ originY = h - margin -size
 loop = 0
 
 for g in exportingGlyphs:
-    for m in f.masters[3:4]:
+    for m in f.masters[:1]:
 
         pathToDraw = g.layers[m.id]
-        #print(m.id)
-        #print(pathToDraw.parent.name)
-
+        
         if loop == 0:
 
             # Function that draws the glyph
@@ -264,46 +276,25 @@ for g in exportingGlyphs:
                  originX = margin
                  originY = h - margin - size 
 
-
                  # Page settings
                  newPage('A4')
-                 fill(1)
-                 rect(0,0,w, h)
-                 
-                 text(generalInfo, (margin, h*0.96))
 
-                 strokeWidth(1)
-                 stroke(0)
-                 lineCap("round")
-                 lineDash(.25, 2.5)
-                 line((margin, h*0.95), (w-margin,h*0.95))
-                 stroke(None)
-                 
-                 #stroke(1,0,0)
-                 #strokeWidth(1)
-                 line(
-                     (0,margin),
-                     (w, margin)
-                  )
-                  
-                  
-                 lineDash(None) 
-                 
-                 # Red guides
-                 #with savedState():
-                 #    strokeWidth(.2)
-                 #    stroke(1,0,0)
-                     #line(
-                     #    (w-margin, 0),
-                     #    (w-margin, h)
-                     #    )
+                 # Background
+                 #cmykFill(0, 90, 86, 0)
+                 #fill(1)
+                 #rect(0,0,w, h)                 
 
-                 #Function
+                 # Dashed lines
+                 drawLinesTopBottom(w, h, margin)
+
+                  text(generalInfo, (margin, h*0.96))
+                 
+                 # Function
                  glyph2draw(pathToDraw, (originX, originY), boxWidth, size)
                 
                 
             # New line
- 
+
             elif originX >= w - margin - reduc:
                 #print('originX out of the page')
                 #print("Origin x out of the width:", originX)
@@ -322,16 +313,14 @@ for g in exportingGlyphs:
                 originY = originY-leading
                 translate(0, 0)
                     
-                #Function
+                # Function
                 glyph2draw(pathToDraw, (originX, originY), boxWidth, size) 
                 
-                #loop = 0
-
 
             else: 
                 originX = originX + boxWidth
 
-                #Function
+                # Function
                 glyph2draw(pathToDraw, (originX, originY), boxWidth, size)
 
                 # Blue circle (guide)
@@ -343,6 +332,11 @@ for g in exportingGlyphs:
                 #    2)
  
         loop += 1
+
+
+# ---------------------
+# Telling Drawbot the drawing is done
+endDrawing()
 
 # ---------------------
 # Test
@@ -373,12 +367,6 @@ saveImage(NewfPath)
 # ---------------------
 # Test
 # ---------------------
-Glyphs.showNotification('Character set builder', 'TEST')
+Glyphs.showNotification('Character set builder', 'Generated character set of the current font')
 
-
-
-# ---------------------
-# Test
-# ---------------------
 print("Done")
-

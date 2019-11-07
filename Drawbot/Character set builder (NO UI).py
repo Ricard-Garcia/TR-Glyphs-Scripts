@@ -257,7 +257,7 @@ originY = h - margin -size
 loop = 0
 
 for g in exportingGlyphs:
-    for m in f.masters[:1]:
+    for m in f.masters:
 
         pathToDraw = g.layers[m.id]
         

@@ -1,12 +1,12 @@
 # MenuTitle: Character set builder
 # -*- coding: utf-8 -*-
 
-# Ricard Garcia (@Typerepublic) - 05.11.2019 
+# Ricard Garcia (@Typerepublic with special help from Gustavo Ferreira and Frederik Berlaen) - 05.11.2019 
 # ------------------------------------------
 
 
 __doc__="""
-From the current font
+From the current font, generates a character set of all exporting glyphs in all masters.
 """
 
 

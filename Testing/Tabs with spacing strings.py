@@ -1,7 +1,7 @@
 # MenuTitle: Set first and second tab to spacing strings
 # -*- coding: utf-8 -*-
 
-# Ricard Garcia - 08.04.2018
+# Ricard Garcia (with special help from Gustavo Ferreira and Frederik Berlaen) - 08.04.2018
 # --------------------------
 
 

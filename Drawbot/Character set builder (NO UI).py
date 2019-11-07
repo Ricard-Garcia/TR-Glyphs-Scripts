@@ -218,7 +218,7 @@ newPage('A4')
 # Columns
 columns = 10
 boxWidth = (w-margin*2) / columns
-#print("Box widht:", boxWidth)
+#print("Box width:", boxWidth)
 
 
 # ································· 
@@ -234,10 +234,10 @@ drawLinesTopBottom(w, h, margin)
 
 # Point/Leading size
 columnWidth = w - margin*2
-print("Column width:",columnWidth)
+#print("Column width:",columnWidth)
 reduc = boxWidth * 1.2
-print("Reduc", reduc)
-print("This is the width - margin - boxWidth", w-margin-boxWidth)
+#print("Reduc", reduc)
+#print("This is the width - margin - boxWidth", w-margin-boxWidth)
 
 # Point sixe
 size = boxWidth*.9
@@ -338,11 +338,6 @@ for g in exportingGlyphs:
 # Telling Drawbot the drawing is done
 endDrawing()
 
-# ---------------------
-# Test
-# ---------------------
-#print(width(), height())
-
 # ································· 
 # Saving process 
 # ·································
@@ -367,6 +362,8 @@ saveImage(NewfPath)
 # ---------------------
 # Test
 # ---------------------
+#print(width(), height())
+
 Glyphs.showNotification('Character set builder', 'Generated character set of the current font')
 
 print("Done")

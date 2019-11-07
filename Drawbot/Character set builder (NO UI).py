@@ -97,7 +97,7 @@ def glyph2draw(layer, boxOrigin, boxWidth, boxHeight = 20, font = f):
     
             
 
-    if layer.bounds.size.width > 0:
+    if layer.bounds.size.width > 0 or str(layer.parent.name) == "space":
         with savedState():
             
             # Rectangle's colours

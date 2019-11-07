@@ -63,7 +63,7 @@ def drawLinesTopBottom(w, h, margin):
     line((margin, h*0.95), (w-margin,h*0.95))
     
     # Bottom line
-    line((margin, h*0.08), (w-margin,h*0.8))
+    line((margin, h*0.05), (w-margin,h*0.05))
     
     stroke(None)
     lineDash(None)
@@ -198,7 +198,7 @@ text(coverInfo, (margin, h*0.90))
 # Designer and manufacturer
 coverInfo2 = FormattedString()
 coverInfo2.append("%s (%s)"%(f.designer, f.manufacturer), font="Barna-Light", fontSize = 12, fill = (0))
-text(coverInfo2, (margin, h*0.09))
+text(coverInfo2, (margin, h*0.08))
 
 
 # Dashed lines
@@ -216,7 +216,7 @@ newPage('A4')
 #rect(0,0,w, h)
 
 # Columns
-columns = 8
+columns = 10
 boxWidth = (w-margin*2) / columns
 #print("Box widht:", boxWidth)
 
@@ -240,7 +240,7 @@ print("Reduc", reduc)
 print("This is the width - margin - boxWidth", w-margin-boxWidth)
 
 # Point sixe
-size = boxWidth*1.2
+size = boxWidth*.9
 
 # Leading
 leading = size*1.2
@@ -287,7 +287,7 @@ for g in exportingGlyphs:
                  # Dashed lines
                  drawLinesTopBottom(w, h, margin)
 
-                  text(generalInfo, (margin, h*0.96))
+                 text(generalInfo, (margin, h*0.96))
                  
                  # Function
                  glyph2draw(pathToDraw, (originX, originY), boxWidth, size)
@@ -357,7 +357,7 @@ fPath = f.filepath
 
 # -----------------------------------------------------
 # Generating a text file with the report 
-NewfName = fNameParts[0] + ' - Character set-2.pdf' # Change extension
+NewfName = fNameParts[0] + ' - Character set.pdf' # Change extension
 NewfPath = os.path.join(fDirectory, NewfName) # Change extension
 #print(NewfPath)
 

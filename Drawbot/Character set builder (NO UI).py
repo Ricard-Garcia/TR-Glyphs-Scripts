@@ -51,6 +51,7 @@ masterID = f.selectedFontMaster.id
 
 # Function drawing top and bottom lines
 def drawLinesTopBottom(w, h, margin):
+    fill(None)
     strokeWidth(1)
     stroke(0)
     lineCap("round")
@@ -218,8 +219,8 @@ boxWidth = (w-margin*2) / columns
 #print("Box width:", boxWidth)
 
 
-# ---------------------
-# Text in the cover
+# -----------
+# Text on top
 
 # Typeface's name + "Character set"
 generalInfo = FormattedString()
@@ -245,7 +246,7 @@ reduc = boxWidth * 1.2
 #print("This is the width - margin - boxWidth", w-margin-boxWidth)
 
 
-# -----------------
+# ----------------------
 # Drawing the characters
 
 # Origin positions

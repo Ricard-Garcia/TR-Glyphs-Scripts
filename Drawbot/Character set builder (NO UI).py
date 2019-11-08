@@ -13,16 +13,14 @@ From the current font, generates a character set of all exporting glyphs in all 
 # ---------------------
 # Modules
 # ---------------------
-
 from GlyphsApp import *
 from drawBot import *
 from vanilla import *
-from random import randint
 import textwrap
 import os
 
 # ---------------------
-# Empty stack for drawbot
+# Empty stack for Drawbot
 newDrawing()
 
 # ---------------------
@@ -51,7 +49,6 @@ masterID = f.selectedFontMaster.id
 # Engine
 # ---------------------
 
-
 # Function drawing top and bottom lines
 def drawLinesTopBottom(w, h, margin):
     strokeWidth(1)
@@ -65,6 +62,7 @@ def drawLinesTopBottom(w, h, margin):
     # Bottom line
     line((margin, h*0.05), (w-margin,h*0.05))
     
+    # Reset values
     stroke(None)
     lineDash(None)
 
@@ -77,8 +75,8 @@ def glyph2draw(layer, boxOrigin, boxWidth, boxHeight = 20, font = f):
 
     # Scale factor 
     scaleFactor = boxHeight/(f.masters[0].capHeight*2)
-    myCapHeight = f.glyphs['H'].layers[0].bounds.size.height
     #print("Scale factor = %s" % (scaleFactor))
+    myCapHeight = f.glyphs['H'].layers[0].bounds.size.height
     #print(myCapHeight)
     
     # Colors
@@ -95,14 +93,13 @@ def glyph2draw(layer, boxOrigin, boxWidth, boxHeight = 20, font = f):
     UnicodeValue = FormattedString()
     UnicodeValue.append(str(layer.parent.unicode), font="Barna-Light", fontSize = boxHeight*.06, fill = (0))
     
-            
-
+    
+    # Glyph's cell        
     if layer.bounds.size.width > 0 or str(layer.parent.name) == "space":
         with savedState():
             
             # Rectangle's colours
             fill(None) 
-            #stroke(0)
             strokeWidth(15*scaleFactor)   
             
             # Black rectangle around     
@@ -116,8 +113,6 @@ def glyph2draw(layer, boxOrigin, boxWidth, boxHeight = 20, font = f):
             # Writing each text (current glyph's name and its Unicode value) 
             text(glyphName, (originX+boxWidth*.08, originY-boxHeight*.03))
             text(UnicodeValue, (originX+boxWidth*.08, originY-boxHeight*.11))
-            #print(glyphName)
-
             
         with savedState():
             scale(scaleFactor, scaleFactor, center = (originX, originY))
@@ -130,18 +125,18 @@ def glyph2draw(layer, boxOrigin, boxWidth, boxHeight = 20, font = f):
             # Drawing the glpyh
             drawPath(layer.completeBezierPath)
     
+
     # If there's an empty cell        
     else:
 
         # Rectangle's colours
         fill(None)
-        #stroke(0)
         strokeWidth(15*scaleFactor)
         
         # Black rectangle around     
         rect(originX, originY-boxHeight*0.2, boxWidth, boxHeight*1.2)
 
-        # Dashed lines       
+        # Dashed cross       
         lineCap("round")
         lineDash(.25, 2.5)  
         line(
@@ -156,22 +151,29 @@ def glyph2draw(layer, boxOrigin, boxWidth, boxHeight = 20, font = f):
 
         lineDash(None)
         
+        # Writing each text (current glyph's name and its Unicode value) 
         text(glyphName, (originX+boxWidth*.08, originY-boxHeight*.03))
         text(UnicodeValue, (originX+boxWidth*.08, originY-boxHeight*.11))
 
 
-# ································· 
-# PDF 
-# ································· 
-
 # ---------------------
+# PDF 
+# ---------------------
+
+# ·····················
 # COVER
+# ·····················
 
 # New A4
 newPage('A4')
 
 # Unpacking its values
 w, h = sizes('A4')
+
+# Background
+#cmykFill(0, 90, 86, 0)
+#fill(1)
+#rect(0,0,w, h)
 
 # Margin set to the 10% of the width
 margin = w*.1
@@ -180,15 +182,9 @@ margin = w*.1
 #print("This is the width - margin", w-margin)
 #print("A4 sizes", sizes('A4'))
 
-# Background
-#cmykFill(0, 90, 86, 0)
-#fill(1)
-#rect(0,0,w, h)
 
-
-# ································· 
+# ---------------------
 # Text in the cover
-# ·································
 
 # Title
 coverInfo = FormattedString()
@@ -200,12 +196,13 @@ coverInfo2 = FormattedString()
 coverInfo2.append("%s (%s)"%(f.designer, f.manufacturer), font="Barna-Light", fontSize = 12, fill = (0))
 text(coverInfo2, (margin, h*0.08))
 
-
 # Dashed lines
 drawLinesTopBottom(w, h, margin)
 
-# -----------------
+
+# ································· 
 # CHARACTER SET
+# ·································
 
 # New A4
 newPage('A4')
@@ -221,9 +218,9 @@ boxWidth = (w-margin*2) / columns
 #print("Box width:", boxWidth)
 
 
-# ································· 
+# ---------------------
 # Text in the cover
-# ·································
+
 # Typeface's name + "Character set"
 generalInfo = FormattedString()
 generalInfo.append("%s — Character set"%(str(f.familyName)), font="Barna-Regular", fontSize = 10, fill = (0))
@@ -233,17 +230,19 @@ text(generalInfo, (margin, h*0.96))
 drawLinesTopBottom(w, h, margin)
 
 # Point/Leading size
+size = boxWidth*.9
+leading = size*1.2
+
+# Column width
 columnWidth = w - margin*2
-#print("Column width:",columnWidth)
+
+# Extra space
 reduc = boxWidth * 1.2
+
+# Print statements
+#print("Column width:",columnWidth)
 #print("Reduc", reduc)
 #print("This is the width - margin - boxWidth", w-margin-boxWidth)
-
-# Point sixe
-size = boxWidth*.9
-
-# Leading
-leading = size*1.2
 
 
 # -----------------
@@ -263,7 +262,7 @@ for g in exportingGlyphs:
         
         if loop == 0:
 
-            # Function that draws the glyph
+            # Drawing the glyph with its text
             glyph2draw(pathToDraw, (originX, originY), boxWidth, size) 
          
         else:
@@ -276,20 +275,15 @@ for g in exportingGlyphs:
                  originX = margin
                  originY = h - margin - size 
 
-                 # Page settings
-                 newPage('A4')
-
-                 # Background
-                 #cmykFill(0, 90, 86, 0)
-                 #fill(1)
-                 #rect(0,0,w, h)                 
+                 # New A4
+                 newPage('A4')                
 
                  # Dashed lines
                  drawLinesTopBottom(w, h, margin)
 
                  text(generalInfo, (margin, h*0.96))
                  
-                 # Function
+                # Drawing the glyph with its text
                  glyph2draw(pathToDraw, (originX, originY), boxWidth, size)
                 
                 
@@ -297,23 +291,12 @@ for g in exportingGlyphs:
 
             elif originX >= w - margin - reduc:
                 #print('originX out of the page')
-                #print("Origin x out of the width:", originX)
-                
-                # Red guides
-
-                #with savedState():
-                #    strokeWidth(.2)
-                #    stroke(1,0,0)
-                #    line(
-                #       (w-margin, 0),
-                #       (w-margin, h)
-                #       )
-                            
+                                            
                 originX = margin
                 originY = originY-leading
                 translate(0, 0)
                     
-                # Function
+                # Drawing the glyph with its text
                 glyph2draw(pathToDraw, (originX, originY), boxWidth, size) 
                 
 
@@ -322,14 +305,6 @@ for g in exportingGlyphs:
 
                 # Function
                 glyph2draw(pathToDraw, (originX, originY), boxWidth, size)
-
-                # Blue circle (guide)
-                #fill(0,0,1)
-                #oval(
-                #    originX-1,
-                #    originY-1, 
-                #    2,
-                #    2)
  
         loop += 1
 
@@ -338,32 +313,34 @@ for g in exportingGlyphs:
 # Telling Drawbot the drawing is done
 endDrawing()
 
+
 # ································· 
 # Saving process 
 # ·································
 
-# -----------------------------------------------------
+# -----------------------------------
 # Accessing the directory of the file
-# Setting a variable for its path
 fDirectory = os.path.dirname(f.filepath) # Only the directory
 fName = os.path.basename(f.filepath) # Only the name
 fNameParts = os.path.splitext(fName) # Split parts
 fPath = f.filepath
 
-# -----------------------------------------------------
+# --------------------------------------
 # Generating a text file with the report 
 NewfName = fNameParts[0] + ' - Character set.pdf' # Change extension
 NewfPath = os.path.join(fDirectory, NewfName) # Change extension
-#print(NewfPath)
 
 # Saving the .pdf
 saveImage(NewfPath)
 
+
+# ································· 
+# Glyphs' notification
+# ·································
+Glyphs.showNotification('Character set builder', 'Generated character set of the current font')
+
+
 # ---------------------
 # Test
 # ---------------------
-#print(width(), height())
-
-Glyphs.showNotification('Character set builder', 'Generated character set of the current font')
-
 print("Done")

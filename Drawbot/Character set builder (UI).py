@@ -393,7 +393,7 @@ class characterSetBuilder( object ):
         #rect(0,0,w, h)
 
         # Columns
-        columns = 10
+        columns = int(self.w.colNumberEdit.get())
         boxWidth = (w-margin*2) / columns
         #print("Box width:", boxWidth)
 

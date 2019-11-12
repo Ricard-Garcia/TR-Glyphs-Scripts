@@ -89,6 +89,8 @@ class characterSetBuilder( object ):
         
         # Enable/Disable grid
         self.w.rectangle = vanilla.CheckBox( ( margin, linePos-5, 200, 20), "Grid", value=True, sizeStyle='small') 
+        self.w.rectangle.getNSButton().setToolTip_("Enable or disable rectangle around each glyph.")
+
         linePos += lineHeight
 
         self.w.line3 = vanilla.HorizontalLine((margin, linePos+3, columnLine, 1))

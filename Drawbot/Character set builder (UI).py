@@ -19,9 +19,11 @@ import vanilla, math
 import textwrap
 import os
 
+
 # ---------------------
 # Empty stack for Drawbot
 newDrawing()
+
 
 # ---------------------
 # Clear log in Macro Panel
@@ -148,7 +150,7 @@ class characterSetBuilder( object ):
             print traceback.format_exc()
 
 
-    
+    # Names of masters
     def listOfMasterNames( self ):
         try:
             myMasterNameList = [ 
@@ -161,7 +163,6 @@ class characterSetBuilder( object ):
         except:
             print traceback.format_exc()
     
-
 
     def outputError( self, errMsg ):
         print "Character set warning:", errMsg
@@ -242,11 +243,22 @@ class characterSetBuilder( object ):
             UnicodeValue = FormattedString()
             UnicodeValue.append(str(layer.parent.unicode), font="Barna-Light", fontSize = boxHeight*.06, fill = (0))
             
-            
-            # Glyph's cell        
-            if layer.bounds.size.width > 0 or str(layer.parent.name) == "space":
+            # Any character that is a mark  
+            if str(layer.parent.category) == "Mark":
                 with savedState():
+            
+                   
+                    # Dashed circle   
+                    fill(None)
+                    strokeWidth(25*scaleFactor)
+                    stroke(0)
+                    lineCap("round")
+                    lineDash(.30*scaleFactor, 2)
+                
+                    oval(originX+boxWidth*.335, originY+boxHeight*.25, boxWidth//3, boxHeight//3) 
+                   
                     
+                    # Activate grid
                     if self.w.rectangle.get() == 1:
                         #print("Grid enabled")
                         
@@ -265,7 +277,55 @@ class characterSetBuilder( object ):
                     strokeWidth(15*scaleFactor)
                     stroke(1)
 
-                                        # Glyph text and Unicode        
+
+                    # Glyph text and Unicode        
+                    if self.w.glyphText.get() == 1:     
+                        # Writing each text (current glyph's name and its Unicode value) 
+                        glyphNameAndUnicode (glyphName, originX, boxWidth, originY, boxHeight, UnicodeValue)
+                        #print("Text activated")
+  
+                    elif self.w.glyphText.get() == 0:
+                        #print("Text deactivated")
+                        pass
+                   
+
+                # Drawing the glpyh
+                with savedState():
+                    scale(scaleFactor, scaleFactor, center = (originX, originY))
+                    translate(originX, originY+(myCapHeight/2)) # * = unpacking tuple
+
+                    translate(
+                        ((boxWidth - layer.width * scaleFactor) / 2)/scaleFactor
+                        )
+
+                    drawPath(layer.completeBezierPath)
+                    
+                    
+            # Other characters (and separator)
+            if layer.bounds.size.width > 0 or str(layer.parent.category) == "Separator":
+                with savedState():                     
+                
+                    # Activate grid
+                    if self.w.rectangle.get() == 1:
+                        #print("Grid enabled")
+                        
+                        # Rectangle's colours
+                        fill(None) 
+                        strokeWidth(15*scaleFactor)   
+                        # Black rectangle around     
+                        rect(originX, originY-boxHeight*0.2, boxWidth, boxHeight*1.2)
+                        
+                    else:
+                        #print("Grid disabled")
+                        pass
+
+                    # Text and glyph's color 
+                    fill(0.3)
+                    strokeWidth(15*scaleFactor)
+                    stroke(1)
+
+
+                # Glyph's text and Unicode        
                     if self.w.glyphText.get() == 1:     
                         # Writing each text (current glyph's name and its Unicode value) 
                         glyphNameAndUnicode (glyphName, originX, boxWidth, originY, boxHeight, UnicodeValue)
@@ -275,16 +335,17 @@ class characterSetBuilder( object ):
                         #print("Text deactivated")
                         pass
                     
+                # Drawing the glpyh
                 with savedState():
                     scale(scaleFactor, scaleFactor, center = (originX, originY))
                     translate(originX, originY+(myCapHeight/2)) # * = unpacking tuple
 
                     translate(
-                        ((boxWidth - layer.bounds.size.width * scaleFactor) / 2)/scaleFactor
+                        ((boxWidth - layer.width * scaleFactor) / 2)/scaleFactor
                         )
 
-                    # Drawing the glpyh
                     drawPath(layer.completeBezierPath)
+
             
 
             # If there's an empty cell        
@@ -300,28 +361,28 @@ class characterSetBuilder( object ):
                     # Black rectangle around     
                     rect(originX, originY-boxHeight*0.2, boxWidth, boxHeight*1.2)
 
-                    # Dashed cross       
-                    lineCap("round")
-                    lineDash(.25, 2.5)  
-                    line(
-                        (originX, originY - boxHeight * .2),
-                        (originX + boxWidth, originY + boxHeight)
-                        )
-                    
-                    line(
-                        (originX, originY + boxHeight),
-                        (originX + boxWidth, originY - boxHeight * .2)
-                        )
-
-                    lineDash(None)
-                
-                
                 else:
                     #print("Grid deactivated")
                     pass
                  
-                 
-                # Glyph text and Unicode        
+                strokeWidth(15*scaleFactor)
+                # Dashed cross       
+                lineCap("round")
+                lineDash(.25, 2.5)  
+                line(
+                    (originX, originY - boxHeight * .2),
+                    (originX + boxWidth, originY + boxHeight)
+                    )
+                    
+                line(
+                    (originX, originY + boxHeight),
+                    (originX + boxWidth, originY - boxHeight * .2)
+                    )
+
+                lineDash(None)
+                
+                
+                # Glyph's text and Unicode        
                 if self.w.glyphText.get() == 1:     
                     # Writing each text (current glyph's name and its Unicode value) 
                     glyphNameAndUnicode (glyphName, originX, boxWidth, originY, boxHeight, UnicodeValue)
@@ -420,7 +481,7 @@ class characterSetBuilder( object ):
         reduc = boxWidth * 1.2
 
 
-        # Accessing the master/s
+        # Accessing the master
         mastersIndex = self.w.master2Use.getSelection()
         print(mastersIndex)
         
@@ -431,6 +492,10 @@ class characterSetBuilder( object ):
         else:    
             for m in mastersIndex:
                 listOfMasters2.append(self.listOfMasters[ m ])
+                #print(sourceMaster)
+    
+        #listOfMasters2.append(sourceMaster)
+
 
 
         # ----------------------
@@ -444,7 +509,7 @@ class characterSetBuilder( object ):
         loop = 0
 
         for g in f.selection:
-            for m in f.masters:
+            for m in listOfMasters2:
 
                 pathToDraw = g.layers[m.id]
                 
@@ -501,8 +566,11 @@ class characterSetBuilder( object ):
         # Telling Drawbot the drawing is done
         endDrawing()
         
+
+        # ---------------------
         # Closing the window
         self.w.close()
+
 
         # ································· 
         # Saving process 

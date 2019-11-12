@@ -94,9 +94,50 @@ def glyph2draw(layer, boxOrigin, boxWidth, boxHeight = 20, font = f):
     UnicodeValue = FormattedString()
     UnicodeValue.append(str(layer.parent.unicode), font="Barna-Light", fontSize = boxHeight*.06, fill = (0))
     
-    
-    # Glyph's cell        
-    if layer.bounds.size.width > 0 or str(layer.parent.name) == "space":
+    # Any character that is a mark  
+    if str(layer.parent.category) == "Mark":
+        with savedState():
+            
+            # Rectangle's colours
+            fill(None) 
+            strokeWidth(15*scaleFactor)   
+            # Black rectangle around     
+            rect(originX, originY-boxHeight*0.2, boxWidth, boxHeight*1.2)
+            
+            # Dashed circle   
+            fill(None)
+            strokeWidth(25*scaleFactor)
+            stroke(0)
+            lineCap("round")
+            lineDash(.30*scaleFactor, 2)
+                
+            oval(originX+boxWidth*.335, originY+boxHeight*.25, boxWidth//3, boxHeight//3) 
+            
+
+
+            # Text and glyph's color 
+            fill(0.3)
+            strokeWidth(15*scaleFactor)
+            stroke(1)
+
+            # Writing each text (current glyph's name and its Unicode value) 
+            text(glyphName, (originX+boxWidth*.08, originY-boxHeight*.03))
+            text(UnicodeValue, (originX+boxWidth*.08, originY-boxHeight*.11))
+            
+        with savedState():
+            scale(scaleFactor, scaleFactor, center = (originX, originY))
+            translate(originX, originY+(myCapHeight/2)) # * = unpacking tuple
+
+            translate(
+                ((boxWidth - layer.width * scaleFactor) / 2)/scaleFactor
+                )
+
+            # Drawing the glpyh
+            drawPath(layer.completeBezierPath)
+            
+            
+    # Other characters (and separator)
+    elif layer.bounds.size.width > 0 or str(layer.parent.category) == "Separator":
         with savedState():
             
             # Rectangle's colours
@@ -120,7 +161,7 @@ def glyph2draw(layer, boxOrigin, boxWidth, boxHeight = 20, font = f):
             translate(originX, originY+(myCapHeight/2)) # * = unpacking tuple
 
             translate(
-                ((boxWidth - layer.bounds.size.width * scaleFactor) / 2)/scaleFactor
+                ((boxWidth - layer.width * scaleFactor) / 2)/scaleFactor
                 )
 
             # Drawing the glpyh

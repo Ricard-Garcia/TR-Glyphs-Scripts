@@ -7,7 +7,7 @@
 
 
 __doc__="""
-Opens a new tab with a report of the tallest and lowest glyphs.
+Opens a new tab with a report of the tallest and lowest glyphs taking the blackest master as reference.
 """
 
 
@@ -41,7 +41,6 @@ blackestMaster = len(f.masters)-1
 
 # **********
 # General
-
 masterID = f.masters[blackestMaster].id
 glyphsHeights = [[g.name, g.layers[masterID].bounds.origin.y, g.layers[masterID].bounds.origin.y + g.layers[masterID].bounds.size.height, g.unicode] for g in exportingGlyphs]
 
@@ -50,7 +49,9 @@ glyphsHeights = [[g.name, g.layers[masterID].bounds.origin.y, g.layers[masterID]
 # Tallest
 
 # Sorted list using origin y + height
-tallestPrevious = sorted( glyphsHeights, key=lambda x: -x[1] )[0:len(exportingGlyphs)]
+tallestPrevious = sorted( glyphsHeights, key=lambda x: -x[2] )[0:len(exportingGlyphs)]
+
+
 
 
 #print "---------------------------------------------"
@@ -62,7 +63,7 @@ for g in tallestPrevious:
 	else:	
 		g2append = "Uni.: %s ------- N: %s ------- yVal:%d \n" % (str(g[3]), str(g[0]), g[2]) 	
 		tallestNext += g2append	
-		#print(g2append)
+		print(str(g[0]), str(g[2]))
 
 
 # **********
@@ -102,6 +103,7 @@ for g in lowestPrevious:
 		pass
 	else:
 		combinationTab += "/%s" % (str(g[0]))
+		#print(g2append)
 
 
 # Open new tab

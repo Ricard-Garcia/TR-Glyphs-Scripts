@@ -7,7 +7,7 @@
 
 
 __doc__="""
-Generates a new text file in font's path with a report of the tallest and lowest glyphs.
+Generates a new text file in font's path with a report of the tallest and lowest glyphs taking the blackest master as reference.
 """
 
 

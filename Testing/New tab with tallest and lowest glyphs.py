@@ -27,6 +27,7 @@ import os
 f = Glyphs.font
 exportingGlyphs = [g for g in f.glyphs if g.export]
 layer = Glyphs.font.selectedLayers
+blackestMaster = len(f.masters)-1
 
 
 # ---------------------
@@ -40,7 +41,8 @@ layer = Glyphs.font.selectedLayers
 
 # **********
 # General
-masterID = f.masters[0].id
+
+masterID = f.masters[blackestMaster].id
 glyphsHeights = [[g.name, g.layers[masterID].bounds.origin.y, g.layers[masterID].bounds.origin.y + g.layers[masterID].bounds.size.height, g.unicode] for g in exportingGlyphs]
 
 
@@ -48,7 +50,7 @@ glyphsHeights = [[g.name, g.layers[masterID].bounds.origin.y, g.layers[masterID]
 # Tallest
 
 # Sorted list using origin y + height
-tallestPrevious = sorted( glyphsHeights, key=lambda x: -x[2] )[0:len(exportingGlyphs)]
+tallestPrevious = sorted( glyphsHeights, key=lambda x: -x[1] )[0:len(exportingGlyphs)]
 
 
 #print "---------------------------------------------"

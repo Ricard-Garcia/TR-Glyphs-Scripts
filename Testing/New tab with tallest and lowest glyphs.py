@@ -1,7 +1,7 @@
 # MenuTitle: New tab with tallest and lowest glyphs.
 # -*- coding: utf-8 -*-
 
-# Ricard Garcia - 14.10.2019
+# Ricard Garcia (@Typerepublic) - 14.10.2019
 # Parts based on code by mekkablue (https://github.com/mekkablue)
 # ---------------------------------------------------------------
 

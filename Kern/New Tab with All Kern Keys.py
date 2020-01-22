@@ -11,6 +11,12 @@ Opens a new tab with all kern key characters.
 
 
 # ---------------------
+# TODO
+# ---------------------
+# Improve how the script gets each kern group.
+
+
+# ---------------------
 # Variables
 # ---------------------
 f = Glyphs.font

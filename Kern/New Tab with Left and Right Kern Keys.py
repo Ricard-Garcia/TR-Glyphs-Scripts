@@ -11,6 +11,12 @@ Opens a new tab with left and right kern key characters.
 
 
 # ---------------------
+# TODO
+# ---------------------
+# Improve how the script gets each kern group.
+
+
+# ---------------------
 # Variables
 # ---------------------
 f = Glyphs.font

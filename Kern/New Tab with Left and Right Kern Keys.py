@@ -11,12 +11,6 @@ Opens a new tab with left and right kern key characters.
 
 
 # ---------------------
-# TODO
-# ---------------------
-# Improve how the script gets each kern group.
-
-
-# ---------------------
 # Variables
 # ---------------------
 f = Glyphs.font
@@ -30,62 +24,46 @@ f = Glyphs.font
 exportingGlyphs = [g for g in f.glyphs if g.export]
 
 # Empty liss to append the keys as strings
-leftKernClasses = []
-rightKernClasses = []
+LKGList = []
+RKGList = []
 
-# Left Kerning Classes
+LKGText = ""
+RKGText = ""
+
 for g in exportingGlyphs:
-	if str(g.leftKerningGroup) in leftKernClasses:
-		pass
-	else:
-		leftKernClasses.append(str(g.leftKerningGroup))
-		
-#print leftKernClasses
-
-leftKernSelection = []
-for c in leftKernClasses:
-	for g in f.glyphs:
-		if c == g.name:
-			leftKernSelection.append(g)
-
-
-# Right Kerning Classes
-for g in exportingGlyphs:
-	if str(g.rightKerningGroup) in rightKernClasses:
-		pass
-	else:
-		rightKernClasses.append(str(g.rightKerningGroup))
-
-#print rightKernClasses
-
-rightKernSelection = []
-
-for c in rightKernClasses:
-	for g in f.glyphs:
-		if c == g.name:
-			rightKernSelection.append(g)
+	glyphLKG = g.leftKerningGroup
+	glyphRKG = g.rightKerningGroup
+	
+	
+	# Left Kerning Classes
+	if glyphLKG != None:
+		if glyphLKG not in LKGList:
+			LKGList.append(str(glyphLKG))
+			LKGText += "/%s  " % (str(glyphLKG))
+			
+			
+	# Right Kerning Classes
+	if glyphRKG != None:
+		if glyphRKG not in RKGList:
+			RKGList.append(str(glyphRKG))
+			RKGText += "/%s  " % (str(glyphRKG))
 
 
-# Generating the string for a new tab
-newTabString = " "
-newTabString += "Left Kerning Keys \n----------------------------------\n"
 
-# Adding left key characters
-for lk in leftKernSelection:
-	newTabString += lk.string
+# Title
+tabText = "------------------------------\n Kerning keys for %s \n------------------------------\n" % (f.familyName)
 
-newTabString += "\n\n\n"
+# LKG Title
+tabText += "\n\n Left Kerning Keys \n *******************************\n"
+tabText += LKGText
 
-newTabString += "Right Kerning Keys \n----------------------------------\n"
+# RKG Title
+tabText += "\n\n Right Kerning Keys \n *******************************\n"
+tabText += RKGText
 
-# Adding right key characters
-for rk in rightKernSelection:
-	newTabString += rk.string
-
-#print(newTabString)	
 
 # Opening new tab
-Font.newTab(newTabString)
+Font.newTab(tabText)
 	
 		
 # ---------------------

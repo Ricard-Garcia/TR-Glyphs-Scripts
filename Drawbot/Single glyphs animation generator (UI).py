@@ -233,7 +233,7 @@ class singleGlyphsAnimation( object ):
         
         
         # Page format (pixels)
-        wi, he = 1920, 1200
+        wi, he = int(self.w.widthUser.get()), int(self.w.heightUser.get())
         
         
         # Getting the components of the color well (foreground)
@@ -394,7 +394,7 @@ class singleGlyphsAnimation( object ):
                 stroke(redFG, greenFG, blueFG,1)
     
                 drawPath(layer.completeBezierPath)
-                drawNodes(layer, 20*s, s)
+                drawNodes(layer, 5*s, s)
 
                 #print("nodes")
     

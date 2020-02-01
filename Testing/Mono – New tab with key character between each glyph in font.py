@@ -40,9 +40,7 @@ for g in f.glyphs:
 	
 	newText += "/%s /%s/%s/%s /%s/%s \n" % (g.name, spaceC, spaceC, g.name, spaceC, spaceC)
 
-	
-Font.newTab(newText)
-		
+			
 		
 # Opening a new tab
 f.newTab(tabText)

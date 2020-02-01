@@ -36,14 +36,15 @@ tabText = ""
 
 # Iterating through all glyphs
 for g in f.glyphs:
-
+	# If the width of the current layer is not equal to 600
 	if g.layers[m.id].width != 600:
-		tabText = "/%s " % (g.name)
+		tabText += "/%s " % (g.name)
+		print(g.name)
 	else:
 		pass
-		#print("No problem")
-		
-		
+		#print("All set with character: %s" % (g.name))
+
+
 # Opening a new tab
 f.newTab(tabText)
 
@@ -53,7 +54,3 @@ f.newTab(tabText)
 # Test
 # ---------------------
 print("Done!")
-
-
-
-

@@ -38,7 +38,7 @@ tabText = ""
 for g in f.glyphs:
 	spaceC = "bar"
 	
-	newText += "/%s /%s/%s/%s /%s/%s \n" % (g.name, spaceC, spaceC, g.name, spaceC, spaceC)
+	tabText += "/%s /%s/%s/%s /%s/%s \n" % (g.name, spaceC, spaceC, g.name, spaceC, spaceC)
 
 			
 		

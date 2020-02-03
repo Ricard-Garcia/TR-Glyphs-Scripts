@@ -51,8 +51,7 @@ NewfPath = os.path.join(fDirectory, NewfName) # Change extension
 fontNotes = "# %s Notes\n\n" % (fNameParts[0])
 
 # Adding the notes
-for l in font.note:
-	fontNotes += font.note
+fontNotes += font.note
 
 # Opening and writing the file
 newFile = open(NewfPath, 'w')

@@ -1,4 +1,4 @@
-# MenuTitle: Monospaced - New tab with a testing string for monospaced fonts (UB).
+# MenuTitle: Monospaced - New tab with a testing string for monospaced fonts (UI).
 # -*- coding: utf-8 -*-
 
 # Ricard Garcia (@Typerepublic) - 03.02.2020

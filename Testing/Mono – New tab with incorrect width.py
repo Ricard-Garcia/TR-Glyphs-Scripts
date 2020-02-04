@@ -18,6 +18,7 @@ In the current master, opens a new tab with those characters not fitting the wid
 # Modules
 # ---------------------
 from GlyphsApp import *
+from vanilla import *
 
 
 # ---------------------

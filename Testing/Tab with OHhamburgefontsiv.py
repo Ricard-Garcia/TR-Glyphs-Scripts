@@ -1,5 +1,7 @@
 # MenuTitle: New tab with OHhamburgefontsiv randomized
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia - 07.11.2018
 # --------------------------

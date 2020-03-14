@@ -1,5 +1,7 @@
 # MenuTitle: New tab with tallest and lowest glyphs.
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia (@Typerepublic) - 14.10.2019
 # Parts based on code by mekkablue (https://github.com/mekkablue)
@@ -54,8 +56,8 @@ tallestPrevious = sorted( glyphsHeights, key=lambda x: -x[2] )[0:len(exportingGl
 
 
 
-#print "---------------------------------------------"
-#print "Tallest glyphs \n"
+#print("---------------------------------------------")
+#print("Tallest glyphs \n")
 tallestNext = ""
 for g in tallestPrevious:
 	if g[2] <= f.masters[0].capHeight:
@@ -69,8 +71,8 @@ for g in tallestPrevious:
 # **********
 # Lowest
 
-#print "\n\n---------------------------------------------"
-#print "Lowest glyphs \n"
+#print("\n\n---------------------------------------------")
+#print("Lowest glyphs \n")
 lowestNext = ""
 lowestPrevious = sorted( glyphsHeights, key=lambda x: x[1] )[0:len(exportingGlyphs)]
 for g in lowestPrevious:

@@ -1,5 +1,7 @@
 # MenuTitle: Select same color
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia (@Typerepublic) - 02.10.2019 
 # ------------------------------------------
@@ -39,4 +41,4 @@ f.selection = nextSelection
 # ---------------------
 # Test
 # ---------------------
-print("Done")
+print("Done!")

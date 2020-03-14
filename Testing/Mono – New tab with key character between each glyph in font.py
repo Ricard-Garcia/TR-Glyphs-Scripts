@@ -1,5 +1,7 @@
 # MenuTitle: Monospaced - New tab with a testing string for monospaced fonts (UI).
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia (@Typerepublic) - 03.02.2020
 # ------------------------------------------
@@ -62,6 +64,9 @@ class monospaceString( object ):
 				
 		# Opening a new tab
 		f.newTab(tabText)	
+
+		# Closing the window after clicking
+		self.w.close()
 
 # Calling the object
 monospaceString()

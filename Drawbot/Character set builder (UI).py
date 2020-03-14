@@ -1,5 +1,7 @@
 # MenuTitle: Character set builder with UI
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia (@Typerepublic with special help from Gustavo Ferreira and Frederik Berlaen) - 11.11.2019 
 # ------------------------------------------
@@ -134,7 +136,7 @@ class characterSetBuilder( object ):
         except:
             import traceback
 
-            print traceback.format_exc()
+            print(traceback.format_exc())
 
         
     # Update List of Masters
@@ -149,7 +151,7 @@ class characterSetBuilder( object ):
             masterList.reverse() # so index accessing works as expected, and the default is: current font = target
             self.listOfMasters = masterList
         except:
-            print traceback.format_exc()
+            print(traceback.format_exc())
 
 
     # Names of masters
@@ -163,11 +165,11 @@ class characterSetBuilder( object ):
             ]
             return myMasterNameList
         except:
-            print traceback.format_exc()
+            print(traceback.format_exc())
     
 
     def outputError( self, errMsg ):
-        print "Character set warning:", errMsg
+        print("Character set warning:", errMsg)
 
 
     # Build character set

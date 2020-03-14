@@ -1,5 +1,7 @@
 #MenuTitle: Generates a .txt file of the notes to the current path of the file.
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia - ??.05.2019
 # --------------------------

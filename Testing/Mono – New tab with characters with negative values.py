@@ -1,5 +1,7 @@
 # MenuTitle: Monospaced - New tab with characters with negative metrics in the current master.
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia (@Typerepublic) - 27.01.2020
 # ------------------------------------------

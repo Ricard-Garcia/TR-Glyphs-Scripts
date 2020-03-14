@@ -1,5 +1,7 @@
 # MenuTitle: Monospaced - New tab with characters with incorrect width (UI).
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia (@Typerepublic) - 03.02.2020
 # ------------------------------------------
@@ -69,8 +71,11 @@ class testWidth( object ):
 		# Opening a new tab
 		f.newTab(tabText)	
 
+		self.w.close()
+
 # Calling the object
 testWidth()
+
 
 
 # ---------------------

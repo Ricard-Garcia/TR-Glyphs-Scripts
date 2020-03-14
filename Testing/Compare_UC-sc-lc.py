@@ -1,5 +1,7 @@
 # MenuTitle: New tab with uppercase, small cap and lowercase
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia - 02.10.2019
 # --------------------------

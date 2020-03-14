@@ -1,5 +1,7 @@
 # MenuTitle: Select characters with components
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia (with special help from Rainer, Tosche and Mark) - 10.02.2019
 # ---------------------------------------------------------------------------

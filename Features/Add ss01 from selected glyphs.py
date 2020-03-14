@@ -1,5 +1,7 @@
 #MenuTitle: .ss01 from selected characters
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 
 # Ricard Garcia - ??.02.2019
 # --------------------------
@@ -37,7 +39,7 @@ print(select_g)
 # Generate glyphs
 for g in select_g:
 	if g+'.ss01' in glyphs:
-		print "Glyph %s.ss01 already in font." % (g)
+		print("Glyph %s.ss01 already in font." % (g))
 	else:
 		newGlyph = font.glyphs[g].copy()
 		newGlyph.name = g+'.ss01'
@@ -57,8 +59,8 @@ for g in select_g:
 # ---------------------
 # Update features
 for feature in font.features:
-        if feature.automatic:
-                feature.update()
+#   if feature.automatic:
+    feature.update()
                          
 # ---------------------
 # Clear log in Macro Panel

@@ -45,7 +45,7 @@ Check your app is up to date and you have the latest version of the script. For 
 
 # License
 
-Copyright 2019 Ricard Garcia.
+Copyright 2020 Ricard Garcia.
 
 
 Licensed under the Apache License, Version 2.0 (the "License");

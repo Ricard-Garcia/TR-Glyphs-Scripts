@@ -113,7 +113,7 @@ class singleGlyphsAnimation( object ):
         # Background color
         self.w.bgColorTitle = vanilla.TextBox((columnLine + margin*3, linePos+2, 100, lineHeight), "Background", sizeStyle = "small") 
         self.w.bgColorWell = vanilla.ColorWell((columnLine + 20 + 120, linePos, 50, 20), color = NSColor.colorWithCalibratedRed_green_blue_alpha_(227//255, 39//255, 39//255, 1)) # TR red (RGB)
-        print(color)
+        #print(color)
 
         
         # ·····················································

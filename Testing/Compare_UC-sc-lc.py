@@ -21,151 +21,34 @@ outputString = " "
 # ---------------------
 # List
 # ---------------------
-# Comparing uppercase, small caps and lowercase
-base_characters = [ 
-"a",
-"aacute",
-"abreve",
-"acircumflex",
-"adieresis",
-"agrave",
-"amacron",
-"aogonek",
-"aring",
-"atilde",
-"ae",
-"b",
-"c",
-"cacute",
-"ccaron",
-"ccedilla",
-"ccircumflex",
-"cdotaccent",
-"d",
-"eth",
-"dcaron",
-"dcroat",
-"e",
-"eacute",
-"ecaron",
-"ecircumflex",
-"edieresis",
-"edotaccent",
-"egrave",
-"emacron",
-"eogonek",
-"f",
-"g",
-"gbreve",
-"gcircumflex",
-"gcommaaccent",
-"gdotaccent",
-"h",
-"hbar",
-"hcircumflex",
-"i",
-"idotless",
-"iacute",
-"icircumflex",
-"idieresis",
-"idotaccent",
-"igrave",
-"imacron",
-"iogonek",
-"itilde",
-"j",
-"jdotless",
-"jcircumflex",
-"k",
-"kcommaaccent",
-"kgreenlandic",
-"l",
-"lacute",
-"lcaron",
-"lcommaaccent",
-"lslash",
-"m",
-"n",
-"nacute",
-"ncaron",
-"ncommaaccent",
-"eng",
-"ntilde",
-"o",
-"oacute",
-"ocircumflex",
-"odieresis",
-"ograve",
-"ohungarumlaut",
-"omacron",
-"oslash",
-"otilde",
-"oe",
-"p",
-"thorn",
-"q",
-"r",
-"racute",
-"rcaron",
-"rcommaaccent",
-"s",
-"sacute",
-"scaron",
-"scedilla",
-"scircumflex",
-"scommaaccent",
-"germandbls",
-"longs",
-"t",
-"tbar",
-"tcaron",
-"tcedilla",
-"tcommaaccent",
-"u",
-"uacute",
-"ubreve",
-"ucircumflex",
-"udieresis",
-"ugrave",
-"uhungarumlaut",
-"umacron",
-"uogonek",
-"uring",
-"utilde",
-"v",
-"w",
-"wacute",
-"wcircumflex",
-"wdieresis",
-"wgrave",
-"x",
-"y",
-"yacute",
-"ycircumflex",
-"ydieresis",
-"ygrave",
-"z",
-"zacute",
-"zcaron",
-"zdotaccent"
-]
+listUC = []
 
+for g in Font.glyphs:
+	if g.subCategory == "Uppercase":
+		listUC.append(g.name)
+	else:
+		pass
+
+# ---------------------
+# Test
+# ---------------------
+print("List done!")
 
 # ---------------------
 # Engine
 # ---------------------
-for bc in base_characters:
-	capitalized_letter = bc.capitalize()
+for bc in listUC:
+	lc_letter = bc.lower()
 	
 	
-	result =  "/%s /%s.sc /%s " % (capitalized_letter, bc, bc) 
+	result =  "/%s /%s.smcp /%s " % (bc, lc_letter, lc_letter) 
 	
 	#Add new line + result to outputString
 	outputString += "\n" + result 
 
-	print(outputString)
+print(outputString)
 
-# Open new tab with outputString
+# Open new tab with outputString	
 Font.newTab(outputString)
 
 

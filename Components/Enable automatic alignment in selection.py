@@ -1,4 +1,4 @@
-# MenuTitle: Guides through all alignment zones
+# MenuTitle: Automatic alignment for all selected glyphs in all masters
 # -*- coding: utf-8 -*-
 from __future__ import division, print_function, unicode_literals
 
@@ -8,13 +8,8 @@ from __future__ import division, print_function, unicode_literals
 
 
 __doc__="""
-Sets a global guideline in each alignment zone.
+Enables automatic alignment for all selected glyphs in all masters.
 """
-
-# ---------------------
-# Modules
-# ---------------------
-
 
 # ---------------------
 # Variables

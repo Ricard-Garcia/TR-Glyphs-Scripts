@@ -41,7 +41,7 @@ for bc in listUC:
 	lc_letter = bc.lower()
 	
 	
-	result =  "/%s /%s.smcp /%s " % (bc, lc_letter, lc_letter) 
+	result =  "/%s /%s.smcp /%s  " % (bc, lc_letter, lc_letter) 
 	
 	#Add new line + result to outputString
 	outputString += "\n" + result 

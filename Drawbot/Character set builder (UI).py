@@ -3,13 +3,18 @@
 from __future__ import division, print_function, unicode_literals
 
 
-# Ricard Garcia (@Typerepublic with special help from Gustavo Ferreira and Frederik Berlaen) - 11.11.2019 
+# Ricard Garcia (@Typerepublic with special help from Gustavo Ferreira and Frederik Berlaen) - 02.06.2019 
 # ------------------------------------------
 
 
 __doc__="""
 From the current font, generates a character set with the given instructions in the UI.
 """
+
+# ---------------------
+# Notes
+# ---------------------
+# Uses intances' drawings instead of masters' ones.
 
 
 # ---------------------
@@ -62,7 +67,7 @@ class characterSetBuilder( object ):
 
 
         # Description text
-        self.w.descriptionText = vanilla.TextBox( (margin, linePos, -margin, 14), u"Select some glyphs and choose the masters you want to see in the character set.", sizeStyle='small', selectable=True )
+        self.w.descriptionText = vanilla.TextBox( (margin, linePos, -margin, 14), u"Select some glyphs and choose the instances you want to see in the character set.", sizeStyle='small', selectable=True )
         linePos += lineHeight*1.5
 
 
@@ -75,7 +80,7 @@ class characterSetBuilder( object ):
         
 
         # All masters
-        self.w.allMasters = vanilla.CheckBox( ( margin*2, linePos-1, 200, 20), "All masters", value=False, sizeStyle='small', callback=self.buttonCheck ) 
+        self.w.allMasters = vanilla.CheckBox( ( margin*2, linePos-1, 200, 20), "All instances", value=False, sizeStyle='small', callback=self.buttonCheck ) 
         linePos += lineHeight*1.8
 
         self.w.line = vanilla.HorizontalLine((margin, linePos-10, columnLine, 1))
@@ -145,7 +150,7 @@ class characterSetBuilder( object ):
             masterList = []
         
             for thisFont in Glyphs.fonts:
-                for thisMaster in thisFont.masters:
+                for thisMaster in thisFont.instances:
                     masterList.append( thisMaster )
             
             masterList.reverse() # so index accessing works as expected, and the default is: current font = target
@@ -492,7 +497,7 @@ class characterSetBuilder( object ):
         listOfMasters2 = []
         
         if self.w.allMasters.get() == 1:
-           listOfMasters2 = f.masters
+           listOfMasters2 = f.instances
         else:    
             for m in mastersIndex:
                 listOfMasters2.append(self.listOfMasters[ m ])
@@ -512,10 +517,20 @@ class characterSetBuilder( object ):
         # Loop count
         loop = 0
 
-        for g in f.selection:
+        selectedLayers = f.selectedLayers
+
+
+        for thisLayer in selectedLayers:
             for m in listOfMasters2:
 
-                pathToDraw = g.layers[m.id]
+                instanceFont = m.interpolatedFontProxy
+
+                instanceGlyph = instanceFont.glyphForName_(thisLayer.parent.name)
+                pathToDraw = instanceGlyph.layers[instanceFont.fontMasterID()]
+                #drawPath(instanceLayer.bezierPath)
+            
+
+                #pathToDraw = g.layers[m.id]
                 
                 if loop == 0:
 

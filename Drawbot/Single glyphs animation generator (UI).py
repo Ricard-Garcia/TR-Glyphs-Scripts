@@ -163,7 +163,7 @@ class singleGlyphsAnimation( object ):
         self.w.savingFormatTitle = vanilla.TextBox((columnLine + 40, int(linePos+10), columnLine, lineHeight), "File format:", sizeStyle = "small")
         
         self.w.popUpFormat = vanilla.PopUpButton((columnLine+110, linePos+7, -margin, 20),
-                              [".gif", ".mov", ".jpg", ".pdf"])
+                              [".gif", ".mp4", ".jpg", ".pdf"])
 
         
         # ·····················································
@@ -269,7 +269,7 @@ class singleGlyphsAnimation( object ):
                 newOriginY = ( pageHeight - layerH ) / 2
         
                 heightHGlyph =  f.glyphs['H'].layers[0].bounds.size.height*scaleFactor
-                baselinePos = ( (pageHeight - heightHGlyph) / 2  ) - height()*.05
+                baselinePos = ( (pageHeight - heightHGlyph) / 2  ) - height()*.015
         
             if layer.bounds.origin.y == 0:
                 newOriginY = baselinePos
@@ -299,6 +299,7 @@ class singleGlyphsAnimation( object ):
                     for i, node in enumerate(path.nodes):
                         xNode, yNode = node.position
                         if node.type == "offcurve":
+                            colorSpace("sRGB")
                             fill(redBG, greenBG, blueBG)
                             strokeWidth(2*scale)
                             stroke(redFG, greenFG, blueFG)
@@ -312,6 +313,7 @@ class singleGlyphsAnimation( object ):
                             stroke(None)
                                       
                         elif node.type == "curve":
+                            colorSpace("sRGB")
                             fill(redFG, greenFG, blueFG)
                             oval(
                                 xNode - radius,
@@ -344,6 +346,7 @@ class singleGlyphsAnimation( object ):
                             stroke(None)
                         
                         else:
+                            colorSpace("sRGB")
                             fill(redFG, greenFG, blueFG)
                             oval(
                                 xNode - radius,
@@ -351,6 +354,7 @@ class singleGlyphsAnimation( object ):
                                 diameter,
                                 diameter
                                 )
+                            colorSpace("sRGB")
                             fill(redFG, greenFG, blueFG)          
         
         newDrawing()
@@ -366,6 +370,7 @@ class singleGlyphsAnimation( object ):
           
             # Background
             #print("Background", redBG, greenBG, blueBG)
+            colorSpace("genericRGB")
             fill(float(redBG), float(greenBG), float(blueBG))
             rect(0,0,wi,he)
             
@@ -393,6 +398,7 @@ class singleGlyphsAnimation( object ):
             
     
             if self.w.showNodes.get() == 1:
+                colorSpace("sRGB")
                 fill(redBG, greenBG, blueBG,1)
                 strokeWidth(1)
                 stroke(redFG, greenFG, blueFG,1)
@@ -404,6 +410,7 @@ class singleGlyphsAnimation( object ):
     
     
             elif self.w.showNodes.get() == 0:
+                colorSpace("sRGB")
                 fill(redFG, greenFG, blueFG)
                 strokeWidth(1)
                 drawPath(layer.completeBezierPath)
@@ -436,7 +443,7 @@ class singleGlyphsAnimation( object ):
         # Generating a text file with the report 
         # Assigning a format
         self.w.popUpFormat.get()
-        listOfFormats = [".gif", ".mov", ".jpg", ".pdf"]
+        listOfFormats = [".gif", ".mp4", ".jpg", ".pdf"]
         
         
         NewfName = fNameParts[0] + ' - Single Glyphs animation%s' % (listOfFormats[self.w.popUpFormat.get()]) # Change extension

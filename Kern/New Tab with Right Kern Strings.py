@@ -1,4 +1,4 @@
-# MenuTitle: New Tab with Left and Right Kern Strings
+# MenuTitle: New Tab with Right Kern Strings
 # -*- coding: utf-8 -*-
 from __future__ import division, print_function, unicode_literals
 
@@ -6,14 +6,38 @@ from __future__ import division, print_function, unicode_literals
 # Ricard Garcia (@Typerepublic) - 29.07.2019
 # ------------------------------------------
 
+__doc__="""
+From current's selection, opens a new tab with right kern strings.
+"""
 
+
+# ---------------------
+# Notes
+# ---------------------
+# Make it usable for both left and right kern keys.
+
+
+# Clearing Macro Panel
 Glyphs.clearLog()
 
+
+# ---------------------
+# Variables
+# ---------------------
 f = Glyphs.font
 
+# ---------------------
+# Lists
+# ---------------------
 UCList = []
 lcList = []
 
+
+# ---------------------
+# Engine
+# ---------------------
+
+# Getting glyphs' subcategories
 for g in f.glyphs:
 	if g.subCategory == "Uppercase":
 		UCList.append(str(g.name))
@@ -22,17 +46,15 @@ for g in f.glyphs:
 		lcList.append(str(g.name))
 		
 		
-
 # Uppercase kern tab
 UCTab = " "
 listRKG = []
 UCMasterKerns = []
 
-
+# Appending kern keys
 for u in UCList:
 	RKG = f.glyphs[str(u)].rightKerningGroup
-	#print(RKG)
-	
+
 	if RKG not in listRKG:
 		listRKG.append(RKG)
 		#UCMasterKerns.append(u)
@@ -40,7 +62,7 @@ for u in UCList:
 	else:
 		pass
 		
-		
+# Generating the string		
 for u in f.selection:
 	if rkg != None:
 		for i in listRKG:
@@ -52,6 +74,16 @@ for u in f.selection:
 	else:
 		pass
 					
+
+# Opening a new tab with the new string
+f.newTab(UCTab)
+
+
+# ---------------------
+# Test
+# ---------------------
+
+
 #print(UCList)
 #print("\n")
 #print("UC Master Kern:", UCMasterKerns)	
@@ -60,7 +92,5 @@ for u in f.selection:
 #print("\n")
 #print(listRKG)
 #print("\n")
-
-f.newTab(UCTab)
-
+print("Done!")
 

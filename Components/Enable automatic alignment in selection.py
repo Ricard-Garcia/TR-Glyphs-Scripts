@@ -20,7 +20,6 @@ f = Glyphs.font
 # ---------------------
 # Engine
 # ---------------------
-# For each alignment zone in the current master
 for g in f.selection:
 	for l in g.layers:
 		if l.isMasterLayer == True:

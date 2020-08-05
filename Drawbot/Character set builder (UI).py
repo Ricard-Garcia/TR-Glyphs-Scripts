@@ -16,7 +16,6 @@ From the current font, generates a character set with the given instructions in 
 # ---------------------
 # Uses intances' drawings instead of masters' ones.
 
-
 # ---------------------
 # Modules
 # ---------------------
@@ -46,12 +45,14 @@ class characterSetBuilder( object ):
 
         # Window settings
         windowWidth = 470
-        windowHeight = 300        
+        windowHeight = 390        
+
 
         # Values used when the window is rezied by the user 
         #windowWidthResize  = 500 
         #windowHeightResize = 10   
-
+        self.pageFormats = ["A0", "A0Landscape", "A1", "A1Landscape", "A2", "A2Landscape", "A3", "A3Landscape", "A4", "A4Landscape", "A4Small", "A4SmallLandscape", "A5", "A5Landscape", "B4", "B4Landscape", "B5", "B5Landscape", "Executive", "ExecutiveLandscape", "Folio, FolioLandscape", "Ledger", "LedgerLandscape", "Legal", "LegalLandscape", "Letter", "LetterLandscape", "LetterSmall", "LetterSmallLandscape", "Quarto", "QuartoLandscape", "Statement", "StatementLandscape", "Tabloid", "TabloidLandscape"]
+        
 
         # Building window
         self.w = vanilla.FloatingWindow(
@@ -71,15 +72,15 @@ class characterSetBuilder( object ):
         linePos += lineHeight*1.5
 
 
-        # Text + list of masters (pop-up button)
+        # Text + list of masters
         self.w.text_anchor = vanilla.TextBox( (margin, linePos+2, 200, 17), "Set the character set in:", sizeStyle='small')
-        self.w.master2Use = vanilla.List( (margin+180, linePos, -margin,190), self.listOfMasterNames(), selectionCallback=self.getMaster, allowsMultipleSelection=True, )
+        self.w.master2Use = vanilla.List( (margin+180, linePos, -margin,268), self.listOfMasterNames(), selectionCallback=self.getMaster, allowsMultipleSelection=True, )
         #print(self.w.master2Use.getSelection()
         self.w.master2Use.enable(onOff=True)
         linePos += lineHeight
         
 
-        # All masters
+        # All instances
         self.w.allMasters = vanilla.CheckBox( ( margin*2, linePos-1, 200, 20), "All instances", value=False, sizeStyle='small', callback=self.buttonCheck ) 
         linePos += lineHeight*1.8
 
@@ -92,26 +93,35 @@ class characterSetBuilder( object ):
         linePos += lineHeight
 
         self.w.line2 = vanilla.HorizontalLine((margin, linePos+7, columnLine, 1))
+        linePos += lineHeight*0.8
+        
+        # Page format Pop-up 
+        self.w.pageFormatText = vanilla.TextBox( (margin, linePos, 200, 17), "Page format:", sizeStyle='small')
+        linePos += lineHeight
+        self.w.pageFormat = vanilla.PopUpButton((margin, linePos-2, columnLine, 20), self.pageFormats, callback=self.popupFormat)
+        linePos += lineHeight
+
+        self.w.line3 = vanilla.HorizontalLine((margin, linePos+7, columnLine, 1))
         linePos += lineHeight-1
         
         # Enable/Disable grid
-        self.w.rectangle = vanilla.CheckBox( ( margin, linePos-5, 200, 20), "Grid", value=True, sizeStyle='small') 
+        self.w.rectangle = vanilla.CheckBox( ( margin, linePos-5, 200, 20), "Grid", value=False, sizeStyle='small') 
         self.w.rectangle.getNSButton().setToolTip_("Enable or disable rectangle around each glyph.")
 
         linePos += lineHeight
 
-        self.w.line3 = vanilla.HorizontalLine((margin, linePos+3, columnLine, 1))
+        self.w.line4 = vanilla.HorizontalLine((margin, linePos+3, columnLine, 1))
         linePos += lineHeight
 
         # Enable/Disable text
-        self.w.glyphText = vanilla.CheckBox( ( margin, linePos-5, 200, 20), "Name & Unicode", value=True, sizeStyle='small') 
+        self.w.glyphText = vanilla.CheckBox( ( margin, linePos-5, 200, 20), "Name & Unicode", value=False, sizeStyle='small') 
         self.w.glyphText.getNSButton().setToolTip_("If activated, prints each glyph's Name and Unicode value.")
 
         #print("Text",self.w.glyphText.get())
         linePos += lineHeight
 
         # Generate button
-        self.w.buildChar = vanilla.Button( ( margin+220, windowHeight*.83, -margin, margin+lineHeight*1.2 ), "Generate", sizeStyle='small', callback=self.buildCharacterSet)
+        self.w.buildChar = vanilla.Button( ( margin+180, windowHeight*.83, -margin, margin+lineHeight*2 ), "Generate", sizeStyle='small', callback=self.buildCharacterSet)
 
 
         # Opening the window
@@ -177,9 +187,14 @@ class characterSetBuilder( object ):
         print("Character set warning:", errMsg)
 
 
+    # Page format
+    def popupFormat(self, sender):
+        #sortedPageFormats = pageFormats.sort()
+        return(sender.get())
+        
+        
     # Build character set
     def buildCharacterSet(self, sender):
-
         # ---------------------
         # Variables
         # ---------------------
@@ -415,18 +430,21 @@ class characterSetBuilder( object ):
         # ·····················
 
         # New A4
-        newPage('A4')
+        pageFormatIndex = self.w.pageFormat.get()
+        selectedPageFormat = str(self.pageFormats[pageFormatIndex])
+        print("Selected format: ", selectedPageFormat)
+        newPage("%s" % (selectedPageFormat))
 
         # Unpacking its values
-        w, h = sizes('A4')
-
+        w, h = width(), height()
+        
         # Background
         #cmykFill(0, 90, 86, 0)
         #fill(1)
         #rect(0,0,w, h)
 
         # Margin set to the 10% of the width
-        margin = w*.1
+        margin = w*.05
 
         # Prints
         #print("This is the width - margin", w-margin)
@@ -454,8 +472,8 @@ class characterSetBuilder( object ):
         # CHARACTER SET
         # ·································
 
-        # New A4
-        newPage('A4')
+        # New page
+        newPage(selectedPageFormat)
 
         # Background
         #cmykFill(0, 90, 86, 0)
@@ -473,8 +491,8 @@ class characterSetBuilder( object ):
 
         # Typeface's name + "Character set"
         generalInfo = FormattedString()
-        generalInfo.append("%s — Character set"%(str(f.familyName)), font="Barna-Regular", fontSize = 10, fill = (0))
-        text(generalInfo, (margin, h*0.96))
+        #generalInfo.append("%s — Character set"%(str(f.familyName)), font="Barna-Regular", fontSize = 10, fill = (0))
+        #text(generalInfo, (margin, h*0.96))
 
         # Dashed lines
         drawLinesTopBottom(w, h, margin)
@@ -492,7 +510,7 @@ class characterSetBuilder( object ):
 
         # Accessing the master
         mastersIndex = self.w.master2Use.getSelection()
-        print(mastersIndex)
+        #print(mastersIndex)
         
         listOfMasters2 = []
         
@@ -547,13 +565,13 @@ class characterSetBuilder( object ):
                          originX = margin
                          originY = h - margin - size 
 
-                         # New A4
-                         newPage('A4')                
+                         # New page
+                         newPage(selectedPageFormat)                
 
                          # Dashed lines
                          drawLinesTopBottom(w, h, margin)
 
-                         text(generalInfo, (margin, h*0.96))
+                         #text(generalInfo, (margin, h*0.96))
                          
                         # Drawing the glyph with its text
                          glyph2draw(pathToDraw, (originX, originY), boxWidth, size)

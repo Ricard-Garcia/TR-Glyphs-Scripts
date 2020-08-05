@@ -491,8 +491,8 @@ class characterSetBuilder( object ):
 
         # Typeface's name + "Character set"
         generalInfo = FormattedString()
-        #generalInfo.append("%s — Character set"%(str(f.familyName)), font="Barna-Regular", fontSize = 10, fill = (0))
-        #text(generalInfo, (margin, h*0.96))
+        generalInfo.append("%s — Character set"%(str(f.familyName)), font="Barna-Regular", fontSize = 10, fill = (0))
+        text(generalInfo, (margin, h*0.96))
 
         # Dashed lines
         drawLinesTopBottom(w, h, margin)

@@ -571,7 +571,7 @@ class characterSetBuilder( object ):
                          # Dashed lines
                          drawLinesTopBottom(w, h, margin)
 
-                         #text(generalInfo, (margin, h*0.96))
+                         text(generalInfo, (margin, h*0.96))
                          
                         # Drawing the glyph with its text
                          glyph2draw(pathToDraw, (originX, originY), boxWidth, size)

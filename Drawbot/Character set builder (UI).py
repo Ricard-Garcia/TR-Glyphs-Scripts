@@ -444,7 +444,7 @@ class characterSetBuilder( object ):
         #rect(0,0,w, h)
 
         # Margin set to the 10% of the width
-        margin = w*.05
+        margin = w*.1
 
         # Prints
         #print("This is the width - margin", w-margin)
@@ -530,7 +530,7 @@ class characterSetBuilder( object ):
 
         # Origin positions
         originX = margin 
-        originY = h - margin -size       
+        originY = h - margin - size       
 
         # Loop count
         loop = 0

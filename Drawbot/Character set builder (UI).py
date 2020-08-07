@@ -51,7 +51,7 @@ class characterSetBuilder( object ):
         # Values used when the window is rezied by the user 
         #windowWidthResize  = 500 
         #windowHeightResize = 10   
-        self.pageFormats = ["A0", "A0Landscape", "A1", "A1Landscape", "A2", "A2Landscape", "A3", "A3Landscape", "A4", "A4Landscape", "A4Small", "A4SmallLandscape", "A5", "A5Landscape", "B4", "B4Landscape", "B5", "B5Landscape", "Executive", "ExecutiveLandscape", "Folio"," FolioLandscape", "Ledger", "LedgerLandscape", "Legal", "LegalLandscape", "Letter", "LetterLandscape", "LetterSmall", "LetterSmallLandscape", "Quarto", "QuartoLandscape", "Statement", "StatementLandscape", "Tabloid", "TabloidLandscape"]
+        self.pageFormats = ["A0", "A0Landscape", "A1", "A1Landscape", "A2", "A2Landscape", "A3", "A3Landscape", "A4", "A4Landscape", "A4Small", "A4SmallLandscape", "A5", "A5Landscape", "B4", "B4Landscape", "B5", "B5Landscape", "Executive", "ExecutiveLandscape", "Folio","FolioLandscape", "Ledger", "LedgerLandscape", "Legal", "LegalLandscape", "Letter", "LetterLandscape", "LetterSmall", "LetterSmallLandscape", "Quarto", "QuartoLandscape", "Statement", "StatementLandscape", "Tabloid", "TabloidLandscape"]
         
 
         # Building window

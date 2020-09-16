@@ -636,7 +636,7 @@ class characterSetBuilder( object ):
 
         # --------------------------------------
         # Generating a text file with the report 
-        NewfName = fNameParts[0] + ' - Character set-%s.pdf' % (selectedPageFormat) # Change extension
+        NewfName = fNameParts[0] + '-Character set-%s.pdf' % (selectedPageFormat) # Change extension
         NewfPath = os.path.join(fDirectory, NewfName) # Change extension
 
         # Saving the .pdf

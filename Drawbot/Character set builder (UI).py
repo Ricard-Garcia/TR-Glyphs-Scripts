@@ -81,7 +81,7 @@ class characterSetBuilder( object ):
         
 
         # All instances
-        self.w.allMasters = vanilla.CheckBox( ( margin*2, linePos-1, 200, 20), "All instances", value=True, sizeStyle='small', callback=self.buttonCheck ) 
+        self.w.allMasters = vanilla.CheckBox( ( margin*2, linePos-1, 200, 20), "All instances", value=False, sizeStyle='small', callback=self.buttonCheck ) 
         linePos += lineHeight*1.8
 
         self.w.line = vanilla.HorizontalLine((margin, linePos-10, columnLine, 1))
@@ -105,7 +105,7 @@ class characterSetBuilder( object ):
         linePos += lineHeight-1
         
         # Enable/Disable grid
-        self.w.rectangle = vanilla.CheckBox( ( margin, linePos-5, 200, 20), "Grid", value=True, sizeStyle='small') 
+        self.w.rectangle = vanilla.CheckBox( ( margin, linePos-5, 200, 20), "Grid", value=False, sizeStyle='small') 
         self.w.rectangle.getNSButton().setToolTip_("Enable or disable rectangle around each glyph.")
 
         linePos += lineHeight

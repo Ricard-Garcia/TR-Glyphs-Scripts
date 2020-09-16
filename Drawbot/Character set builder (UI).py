@@ -81,7 +81,7 @@ class characterSetBuilder( object ):
         
 
         # All instances
-        self.w.allMasters = vanilla.CheckBox( ( margin*2, linePos-1, 200, 20), "All instances", value=False, sizeStyle='small', callback=self.buttonCheck ) 
+        self.w.allMasters = vanilla.CheckBox( ( margin*2, linePos-1, 200, 20), "All instances", value=True, sizeStyle='small', callback=self.buttonCheck ) 
         linePos += lineHeight*1.8
 
         self.w.line = vanilla.HorizontalLine((margin, linePos-10, columnLine, 1))
@@ -105,7 +105,7 @@ class characterSetBuilder( object ):
         linePos += lineHeight-1
         
         # Enable/Disable grid
-        self.w.rectangle = vanilla.CheckBox( ( margin, linePos-5, 200, 20), "Grid", value=False, sizeStyle='small') 
+        self.w.rectangle = vanilla.CheckBox( ( margin, linePos-5, 200, 20), "Grid", value=True, sizeStyle='small') 
         self.w.rectangle.getNSButton().setToolTip_("Enable or disable rectangle around each glyph.")
 
         linePos += lineHeight
@@ -443,8 +443,16 @@ class characterSetBuilder( object ):
         #fill(1)
         #rect(0,0,w, h)
 
-        # Margin set to the 10% of the width
-        margin = w*.1
+        # Margin set to the 10% of the width if it's not a Landscape format
+        if "Landscape" in selectedPageFormat:
+            margin = w*.05
+            marginY = h*.05
+            print("Landscape format")
+        else:
+            margin = w*.1
+            marginY = h*.05
+            
+        
 
         # Prints
         #print("This is the width - margin", w-margin)
@@ -530,7 +538,7 @@ class characterSetBuilder( object ):
 
         # Origin positions
         originX = margin 
-        originY = h - margin - size       
+        originY = h - marginY*1.5  - size       
 
         # Loop count
         loop = 0
@@ -558,12 +566,18 @@ class characterSetBuilder( object ):
                 else:
                     
                     # New page
-                    if originX > w-margin - reduc and originY < margin*2:
+                    # If its a landscape format
+                    if "Landscape" in selectedPageFormat:
+                        bottomMargin =  marginY*2.5
+                    else:
+                        bottomMargin =  marginY*2
+
+                    if originX > w-margin - reduc and originY < bottomMargin:
                          #print("New page needed")                 
                          loop = 0
                          
                          originX = margin
-                         originY = h - margin - size 
+                         originY = h - marginY*1.5 - size 
 
                          # New page
                          newPage(selectedPageFormat)                
@@ -622,7 +636,7 @@ class characterSetBuilder( object ):
 
         # --------------------------------------
         # Generating a text file with the report 
-        NewfName = fNameParts[0] + ' - Character set.pdf' # Change extension
+        NewfName = fNameParts[0] + ' - Character set-%s.pdf' % (selectedPageFormat) # Change extension
         NewfPath = os.path.join(fDirectory, NewfName) # Change extension
 
         # Saving the .pdf

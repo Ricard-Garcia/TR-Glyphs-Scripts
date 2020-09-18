@@ -572,7 +572,7 @@ class characterSetBuilder( object ):
                     else:
                         bottomMargin =  marginY*2
 
-                    if originX > w-margin - reduc and originY < bottomMargin:
+                    if originX > w-margin - reduc and originY - size < bottomMargin:
                          #print("New page needed")                 
                          loop = 0
                          

@@ -163,7 +163,7 @@ class characterSetBuilder( object ):
                 for thisMaster in thisFont.instances:
                     masterList.append( thisMaster )
             
-            masterList.reverse() # so index accessing works as expected, and the default is: current font = target
+            #masterList.reverse() # so index accessing works as expected, and the default is: current font = target
             self.listOfMasters = masterList
         except:
             print(traceback.format_exc())
@@ -524,6 +524,7 @@ class characterSetBuilder( object ):
         
         if self.w.allMasters.get() == 1:
            listOfMasters2 = f.instances
+           
         else:    
             for m in mastersIndex:
                 listOfMasters2.append(self.listOfMasters[ m ])

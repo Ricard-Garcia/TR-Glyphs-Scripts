@@ -99,7 +99,11 @@ class characterSetBuilder( object ):
         self.w.pageFormatText = vanilla.TextBox( (margin, linePos, 200, 17), "Page format:", sizeStyle='small')
         linePos += lineHeight
         self.w.pageFormat = vanilla.PopUpButton((margin, linePos-2, columnLine, 20), self.pageFormats, callback=self.popupFormat)
+        
+        # Default value to A4
+        self.w.pageFormat.set(8)
         linePos += lineHeight
+
 
         self.w.line3 = vanilla.HorizontalLine((margin, linePos+7, columnLine, 1))
         linePos += lineHeight-1

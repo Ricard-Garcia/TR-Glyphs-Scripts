@@ -22,9 +22,9 @@ from AppKit import NSPoint
 # Variables
 # ---------------------
 # Font object
-font = Glyphs.font
+f = Glyphs.font
 # Selected layers
-selectedLayers = font.selectedLayers
+selectedLayers = f.selectedLayers
 # Current master ID to be used in layers
 currentMaster = f.selectedFontMaster.id
 
@@ -52,16 +52,16 @@ for l in selectedLayers:
 # Test
 #print(selectedGlyphs)
 
-for m in font.masters:
+for m in f.masters:
 	masterID = m.id
 	print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", m.name)
 
 
 	for s in selectedGlyphs:
 		print(s)
-		thisLayer = font.glyphs[s].layers[masterID]
+		thisLayer = f.glyphs[s].layers[masterID]
 		# Iterating through anchors in the current master
-		for anchor in font.glyphs[s].layers[currentMaster].anchors:
+		for anchor in f.glyphs[s].layers[currentMaster].anchors:
 			anchorName = anchor.name
 			anchorX = anchor.position.x
 			anchorY = anchor.position.y

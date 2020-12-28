@@ -93,7 +93,7 @@ class singleGlyphsAnimation( object ):
         
         # Width
         self.w.widthTitle = vanilla.TextBox((margin*3, linePos+2, 100, lineHeight), "Width", sizeStyle = "small") 
-        self.w.widthUser = vanilla.EditText((110, linePos, 50, 20), "1920", sizeStyle = "small")
+        self.w.widthUser = vanilla.EditText((110, linePos, 50, 20), "1200", sizeStyle = "small")
         #print(int(str(self.w.widthUser.get())))
         
         
@@ -112,7 +112,7 @@ class singleGlyphsAnimation( object ):
         
         # Background color
         self.w.bgColorTitle = vanilla.TextBox((columnLine + margin*3, linePos+2, 100, lineHeight), "Background", sizeStyle = "small") 
-        self.w.bgColorWell = vanilla.ColorWell((columnLine + 20 + 120, linePos, 50, 20), color = NSColor.colorWithCalibratedRed_green_blue_alpha_(227//255, 39//255, 39//255, 1)) # TR red (RGB)
+        self.w.bgColorWell = vanilla.ColorWell((columnLine + 20 + 120, linePos, 50, 20), color = NSColor.colorWithCalibratedRed_green_blue_alpha_(227/255, 39/255, 39/255, 1)) # TR red (RGB)
         #print(color)
 
         
@@ -137,11 +137,11 @@ class singleGlyphsAnimation( object ):
         
         # Frame Duration value 
         self.w.frameTextEdit = vanilla.TextBox((margin*3, linePos+2, 100, lineHeight), "Fps", sizeStyle = "small") 
-        self.w.frameDurationUser = vanilla.EditText((110, linePos, 50, 20), "3", sizeStyle = "small")
+        self.w.frameDurationUser = vanilla.EditText((110, linePos, 50, 20), "7", sizeStyle = "small")
 
         # Resize Glyph Value
         self.w.resizeGlyphTextEdit = vanilla.TextBox((columnLine + margin*3, linePos+2, 100, lineHeight), "Value", sizeStyle = "small") 
-        self.w.resizeGlyphUser = vanilla.EditText((columnLine + 20 + 120, linePos, 50, 20), "50%", sizeStyle = "small")
+        self.w.resizeGlyphUser = vanilla.EditText((columnLine + 20 + 120, linePos, 50, 20), "100%", sizeStyle = "small")
 
         # ·····················································
 
@@ -163,7 +163,7 @@ class singleGlyphsAnimation( object ):
         self.w.savingFormatTitle = vanilla.TextBox((columnLine + 40, int(linePos+10), columnLine, lineHeight), "File format:", sizeStyle = "small")
         
         self.w.popUpFormat = vanilla.PopUpButton((columnLine+110, linePos+7, -margin, 20),
-                              [".gif", ".mp4", ".jpg", ".pdf"])
+                              [".mp4", ".gif", ".jpg", ".pdf"])
 
         
         # ·····················································
@@ -363,7 +363,7 @@ class singleGlyphsAnimation( object ):
         for g in selection:
         
             newPage(wi, he)
-            #frameDuration(1/fDuration)
+            frameDuration(1/fDuration)
 
             
             
@@ -443,7 +443,7 @@ class singleGlyphsAnimation( object ):
         # Generating a text file with the report 
         # Assigning a format
         self.w.popUpFormat.get()
-        listOfFormats = [".gif", ".mp4", ".jpg", ".pdf"]
+        listOfFormats = [".mp4", ".gif", ".jpg", ".pdf"]
         
         
         NewfName = fNameParts[0] + ' - Single Glyphs animation%s' % (listOfFormats[self.w.popUpFormat.get()]) # Change extension

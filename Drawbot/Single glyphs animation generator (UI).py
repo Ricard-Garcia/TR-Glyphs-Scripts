@@ -370,7 +370,7 @@ class singleGlyphsAnimation( object ):
           
             # Background
             #print("Background", redBG, greenBG, blueBG)
-            colorSpace("genericRGB")
+            colorSpace("sRGB")
             fill(float(redBG), float(greenBG), float(blueBG))
             rect(0,0,wi,he)
             

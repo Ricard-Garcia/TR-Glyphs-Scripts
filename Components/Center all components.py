@@ -16,6 +16,12 @@ Glyphs.clearLog()
 
 
 # ---------------------
+# Modules
+# ---------------------
+from Foundation import NSMidX
+
+
+# ---------------------
 # Variables
 # ---------------------
 f = Glyphs.font
@@ -24,7 +30,6 @@ f = Glyphs.font
 # ---------------------
 # Engine
 # ---------------------
-from Foundation import NSMidX
 
 for l in f.selectedLayers:
 	for c in l.components:

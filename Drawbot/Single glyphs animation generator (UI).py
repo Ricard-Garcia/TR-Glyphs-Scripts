@@ -141,7 +141,7 @@ class singleGlyphsAnimation( object ):
 
         # Resize Glyph Value
         self.w.resizeGlyphTextEdit = vanilla.TextBox((columnLine + margin*3, linePos+2, 100, lineHeight), "Value", sizeStyle = "small") 
-        self.w.resizeGlyphUser = vanilla.EditText((columnLine + 20 + 120, linePos, 50, 20), "100%", sizeStyle = "small")
+        self.w.resizeGlyphUser = vanilla.EditText((columnLine + 20 + 120, linePos, 50, 20), "50%", sizeStyle = "small")
 
         # ·····················································
 
@@ -269,7 +269,7 @@ class singleGlyphsAnimation( object ):
                 newOriginY = ( pageHeight - layerH ) / 2
         
                 heightHGlyph =  f.glyphs['H'].layers[0].bounds.size.height*scaleFactor
-                baselinePos = ( (pageHeight - heightHGlyph) / 2  ) - height()*.015
+                baselinePos = ( (pageHeight - heightHGlyph) / 2  ) - height()*-.04
         
             if layer.bounds.origin.y == 0:
                 newOriginY = baselinePos

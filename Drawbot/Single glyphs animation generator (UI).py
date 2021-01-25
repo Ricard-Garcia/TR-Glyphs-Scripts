@@ -299,7 +299,7 @@ class singleGlyphsAnimation( object ):
                     for i, node in enumerate(path.nodes):
                         xNode, yNode = node.position
                         if node.type == "offcurve":
-                            colorSpace("sRGB")
+                            #colorSpace("sRGB")
                             fill(redBG, greenBG, blueBG)
                             strokeWidth(2*scale)
                             stroke(redFG, greenFG, blueFG)
@@ -313,7 +313,7 @@ class singleGlyphsAnimation( object ):
                             stroke(None)
                                       
                         elif node.type == "curve":
-                            colorSpace("sRGB")
+                            #colorSpace("sRGB")
                             fill(redFG, greenFG, blueFG)
                             oval(
                                 xNode - radius,
@@ -346,7 +346,7 @@ class singleGlyphsAnimation( object ):
                             stroke(None)
                         
                         else:
-                            colorSpace("sRGB")
+                            #colorSpace("sRGB")
                             fill(redFG, greenFG, blueFG)
                             oval(
                                 xNode - radius,
@@ -354,7 +354,7 @@ class singleGlyphsAnimation( object ):
                                 diameter,
                                 diameter
                                 )
-                            colorSpace("sRGB")
+                            #colorSpace("sRGB")
                             fill(redFG, greenFG, blueFG)          
         
         newDrawing()
@@ -370,7 +370,7 @@ class singleGlyphsAnimation( object ):
           
             # Background
             #print("Background", redBG, greenBG, blueBG)
-            colorSpace("sRGB")
+            #colorSpace("sRGB")
             fill(float(redBG), float(greenBG), float(blueBG))
             rect(0,0,wi,he)
             
@@ -398,7 +398,7 @@ class singleGlyphsAnimation( object ):
             
     
             if self.w.showNodes.get() == 1:
-                colorSpace("sRGB")
+                #colorSpace("sRGB")
                 fill(redBG, greenBG, blueBG,1)
                 strokeWidth(1)
                 stroke(redFG, greenFG, blueFG,1)
@@ -410,7 +410,7 @@ class singleGlyphsAnimation( object ):
     
     
             elif self.w.showNodes.get() == 0:
-                colorSpace("sRGB")
+                #colorSpace("sRGB")
                 fill(redFG, greenFG, blueFG)
                 strokeWidth(1)
                 drawPath(layer.completeBezierPath)

@@ -112,7 +112,7 @@ class singleGlyphsAnimation( object ):
         
         # Background color
         self.w.bgColorTitle = vanilla.TextBox((columnLine + margin*3, linePos+2, 100, lineHeight), "Background", sizeStyle = "small") 
-        self.w.bgColorWell = vanilla.ColorWell((columnLine + 20 + 120, linePos, 50, 20), color = NSColor.colorWithCalibratedRed_green_blue_alpha_(227/255, 39/255, 39/255, 1)) # TR red (RGB)
+        self.w.bgColorWell = vanilla.ColorWell((columnLine + 20 + 120, linePos, 50, 20), color = NSColor.colorWithCalibratedRed_green_blue_alpha_(0/255, 0/255, 0/255, 1)) # TR red (RGB) = 227/255, 39/255, 39/255, 1
         #print(color)
 
         
@@ -269,7 +269,7 @@ class singleGlyphsAnimation( object ):
                 newOriginY = ( pageHeight - layerH ) / 2
         
                 heightHGlyph =  f.glyphs['H'].layers[0].bounds.size.height*scaleFactor
-                baselinePos = ( (pageHeight - heightHGlyph) / 2  ) - height()*-.04
+                baselinePos = ( (pageHeight - heightHGlyph) / 2  ) - height()*.08
         
             if layer.bounds.origin.y == 0:
                 newOriginY = baselinePos

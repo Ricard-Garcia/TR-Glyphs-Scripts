@@ -266,10 +266,12 @@ class characterSetBuilder( object ):
             # Text in each box
             # ································· 
             glyphName = FormattedString()
-            glyphName.append(str(layer.parent.name), font="Barna-SemiBold", fontSize = boxHeight*.06, fill = (0))
+            glyphName.append(layer.parent.name, font="Barna-SemiBold", fontSize = boxHeight*.06, fill = (0))
             
             UnicodeValue = FormattedString()
-            UnicodeValue.append(str(layer.parent.unicode), font="Barna-Light", fontSize = boxHeight*.06, fill = (0))
+            uniString = ""
+            uniString = "%s" %(layer.parent.unicode)
+            UnicodeValue.append(uniString, font="Barna-Light", fontSize = boxHeight*.06, fill = (0))
             
             # Any character that is a mark  
             if str(layer.parent.category) == "Mark":
